@@ -1,38 +1,42 @@
 import React from 'react';
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Button } from "@/components/ui/button"
 
 const PromptSection = ({ section, prompt, onChange, onDelete }) => {
   return (
-    <div className="bg-white shadow-md rounded-lg p-6 mb-4">
-      <div className="mb-4">
+    <div className="bg-white shadow-md rounded-lg p-4 mb-3">
+      <div className="mb-2">
         <label htmlFor="section" className="block text-sm font-medium text-gray-700 mb-1">
           Section
         </label>
-        <input
+        <Input
           type="text"
           id="section"
           value={section}
           onChange={(e) => onChange('section', e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full"
         />
       </div>
-      <div className="mb-4">
+      <div className="mb-2">
         <label htmlFor="prompt" className="block text-sm font-medium text-gray-700 mb-1">
           Prompt
         </label>
-        <textarea
+        <Textarea
           id="prompt"
           value={prompt}
           onChange={(e) => onChange('prompt', e.target.value)}
-          rows="4"
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        ></textarea>
+          rows="2"
+          className="w-full resize-none"
+        />
       </div>
-      <button
+      <Button
         onClick={onDelete}
-        className="text-red-600 hover:text-red-800 font-medium"
+        variant="destructive"
+        size="sm"
       >
         Delete Section
-      </button>
+      </Button>
     </div>
   );
 };
