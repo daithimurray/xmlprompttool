@@ -5,7 +5,7 @@ import { toast } from "sonner"
 
 const PromptBuilder = () => {
   const [sections, setSections] = useState([
-    { section: 'persona', prompt: '' },
+    { section: 'persona', prompt: 'Act as a' },
     { section: 'context', prompt: '' },
     { section: 'task', prompt: '' }
   ]);
