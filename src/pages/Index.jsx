@@ -55,6 +55,9 @@ const Index = () => {
           </div>
         )}
         <PromptBuilder initialSections={selectedFramework ? frameworks[selectedFramework].sections : []} />
+        <div className="text-center mt-8 text-sm text-gray-500">
+          Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">David</a>
+        </div>
       </div>
       <Toaster />
     </div>
