@@ -16,7 +16,7 @@ const Index = () => {
     },
     COSTAR: {
       sections: ['context', 'objective', 'style', 'tone', 'audience', 'response'],
-      helpText: 'Context (C): Background information relevant to the task.\nObjective (O): Clear definition of the task.\nStyle (S): Desired writing style or voice.\nTone (T): Emotional tone of the response.\nAudience (A): Identification of the target audience.\nResponse (R): Format of the output.'
+      helpText: 'Context: Background information relevant to the task.\nObjective: Clear definition of the task.\nStyle: Desired writing style or voice.\nTone: Emotional tone of the response.\nAudience: Identification of the target audience.\nResponse: Format of the output.'
     },
     RISEN: {
       sections: ['role', 'input', 'structure', 'engagement', 'nextSteps'],
