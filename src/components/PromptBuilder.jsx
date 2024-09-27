@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PromptSection from './PromptSection';
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 
-const PromptBuilder = () => {
-  const [sections, setSections] = useState([
-    { id: 'persona', section: 'persona', prompt: 'Act as a' },
-    { id: 'context', section: 'context', prompt: '' },
-    { id: 'task', section: 'task', prompt: '' }
-  ]);
+const PromptBuilder = ({ initialSections = [] }) => {
+  const [sections, setSections] = useState([]);
+
+  useEffect(() => {
+    if (initialSections.length > 0) {
+      setSections(initialSections.map((section, index) => ({
+        id: `section-${index}`,
+        section: section,
+        prompt: ''
+      })));
+    }
+  }, [initialSections]);
 
   const handleSectionChange = (index, field, value) => {
     const newSections = [...sections];
@@ -85,7 +91,7 @@ const PromptBuilder = () => {
       >
         Add Section
       </Button>
-      <div className="bg-white shadow-md rounded-lg p-6">
+      <div className="bg-white shadow-md rounded-lg p-4">
         <h2 className="text-xl font-semibold mb-4">Generated XML Prompt</h2>
         <pre className="bg-gray-100 p-4 rounded-md whitespace-pre-wrap mb-4">
           {generateXMLPrompt()}
