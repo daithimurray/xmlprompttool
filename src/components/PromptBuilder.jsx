@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import PromptSection from './PromptSection';
+import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
 
 const PromptBuilder = () => {
-  const [sections, setSections] = useState([{ section: '', prompt: '' }]);
+  const [sections, setSections] = useState([
+    { section: 'persona', prompt: '' },
+    { section: 'context', prompt: '' },
+    { section: 'task', prompt: '' }
+  ]);
 
   const handleSectionChange = (index, field, value) => {
     const newSections = [...sections];
@@ -25,6 +31,12 @@ const PromptBuilder = () => {
       .join('\n\n');
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(generateXMLPrompt())
+      .then(() => toast.success("Copied to clipboard!"))
+      .catch(() => toast.error("Failed to copy"));
+  };
+
   return (
     <div>
       {sections.map((section, index) => (
@@ -36,17 +48,20 @@ const PromptBuilder = () => {
           onDelete={() => deleteSection(index)}
         />
       ))}
-      <button
+      <Button
         onClick={addSection}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4"
+        className="mb-4"
       >
         Add Section
-      </button>
+      </Button>
       <div className="bg-white shadow-md rounded-lg p-6">
         <h2 className="text-xl font-semibold mb-4">Generated XML Prompt</h2>
-        <pre className="bg-gray-100 p-4 rounded-md whitespace-pre-wrap">
+        <pre className="bg-gray-100 p-4 rounded-md whitespace-pre-wrap mb-4">
           {generateXMLPrompt()}
         </pre>
+        <Button onClick={copyToClipboard}>
+          Copy to Clipboard
+        </Button>
       </div>
     </div>
   );
