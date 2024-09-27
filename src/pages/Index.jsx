@@ -20,7 +20,7 @@ const Index = () => {
     },
     RISEN: {
       sections: ['role', 'input', 'structure', 'engagement', 'nextSteps'],
-      helpText: 'RISEN Framework emphasizes:\nRole: The persona or role the AI should assume.\nInput: Specific details or questions to guide responses.\nStructure: Desired format for the output.\nEngagement: Interaction style with users.\nNext Steps: Guidance on follow-up actions or questions.'
+      helpText: 'Role: The persona or role the AI should assume.\nInput: Specific details or questions to guide responses.\nStructure: Desired format for the output.\nEngagement: Interaction style with users.\nNext Steps: Guidance on follow-up actions or questions.'
     },
     GCA: {
       sections: ['goal', 'context', 'audience'],
