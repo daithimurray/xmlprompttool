@@ -24,7 +24,7 @@ const Index = () => {
     },
     GCA: {
       sections: ['goal', 'context', 'audience'],
-      helpText: 'GCA Framework:\nGoal: What task the AI should perform.\nContext: Why the task is necessary and its significance.\nAudience: Who will read or benefit from the output.'
+      helpText: 'Goal: What task the AI should perform.\nContext: Why the task is necessary and its significance.\nAudience: Who will read or benefit from the output.'
     },
     RODES: {
       sections: ['role', 'objective', 'details', 'examples', 'style'],
