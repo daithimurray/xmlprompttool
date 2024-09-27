@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PromptSection from './PromptSection';
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 
 const PromptBuilder = () => {
   const [sections, setSections] = useState([
-    { section: 'persona', prompt: 'Act as a' },
-    { section: 'context', prompt: '' },
-    { section: 'task', prompt: '' }
+    { id: 'persona', section: 'persona', prompt: 'Act as a' },
+    { id: 'context', section: 'context', prompt: '' },
+    { id: 'task', section: 'task', prompt: '' }
   ]);
 
   const handleSectionChange = (index, field, value) => {
@@ -17,7 +18,7 @@ const PromptBuilder = () => {
   };
 
   const addSection = () => {
-    setSections([...sections, { section: '', prompt: '' }]);
+    setSections([...sections, { id: `section-${Date.now()}`, section: '', prompt: '' }]);
   };
 
   const deleteSection = (index) => {
@@ -37,17 +38,47 @@ const PromptBuilder = () => {
       .catch(() => toast.error("Failed to copy"));
   };
 
+  const onDragEnd = (result) => {
+    if (!result.destination) {
+      return;
+    }
+
+    const items = Array.from(sections);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setSections(items);
+  };
+
   return (
     <div>
-      {sections.map((section, index) => (
-        <PromptSection
-          key={index}
-          section={section.section}
-          prompt={section.prompt}
-          onChange={(field, value) => handleSectionChange(index, field, value)}
-          onDelete={() => deleteSection(index)}
-        />
-      ))}
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="sections">
+          {(provided) => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              {sections.map((section, index) => (
+                <Draggable key={section.id} draggableId={section.id} index={index}>
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                    >
+                      <PromptSection
+                        section={section.section}
+                        prompt={section.prompt}
+                        onChange={(field, value) => handleSectionChange(index, field, value)}
+                        onDelete={() => deleteSection(index)}
+                      />
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
       <Button
         onClick={addSection}
         className="mb-4"
