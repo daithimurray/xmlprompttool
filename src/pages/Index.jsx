@@ -8,10 +8,10 @@ const Index = () => {
 
   const frameworks = {
     ACT: {
-      sections: ['persona', 'context', 'task'],
-      helpText: 'Act as a persona\nContext\nTask',
+      sections: ['act', 'context', 'task'],
+      helpText: 'Act: The persona or role the AI should assume.\nContext: Why the task is necessary and its significance.\nTask: What task the AI should perform.',
       defaultPrompts: {
-        persona: 'Act as a'
+        act: 'Act as a'
       }
     },
     COSTAR: {
