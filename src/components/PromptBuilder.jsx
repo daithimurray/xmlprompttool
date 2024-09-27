@@ -4,7 +4,7 @@ import PromptSection from './PromptSection';
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 
-const PromptBuilder = ({ initialSections = [] }) => {
+const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
   const [sections, setSections] = useState([]);
 
   useEffect(() => {
@@ -12,10 +12,10 @@ const PromptBuilder = ({ initialSections = [] }) => {
       setSections(initialSections.map((section, index) => ({
         id: `section-${index}`,
         section: section,
-        prompt: ''
+        prompt: defaultPrompts[section] || ''
       })));
     }
-  }, [initialSections]);
+  }, [initialSections, defaultPrompts]);
 
   const handleSectionChange = (index, field, value) => {
     const newSections = [...sections];

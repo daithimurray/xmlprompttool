@@ -9,7 +9,10 @@ const Index = () => {
   const frameworks = {
     ACT: {
       sections: ['persona', 'context', 'task'],
-      helpText: 'ACT = Act as a persona, context, Task'
+      helpText: 'Act as a persona\nContext\nTask',
+      defaultPrompts: {
+        persona: 'Act as a'
+      }
     },
     COSTAR: {
       sections: ['context', 'objective', 'style', 'tone', 'audience', 'response'],
@@ -54,7 +57,10 @@ const Index = () => {
             <p className="whitespace-pre-wrap">{frameworks[selectedFramework].helpText}</p>
           </div>
         )}
-        <PromptBuilder initialSections={selectedFramework ? frameworks[selectedFramework].sections : []} />
+        <PromptBuilder 
+          initialSections={selectedFramework ? frameworks[selectedFramework].sections : []} 
+          defaultPrompts={selectedFramework ? frameworks[selectedFramework].defaultPrompts : {}}
+        />
         <div className="text-center mt-8 text-sm text-gray-500">
           Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">David</a>
         </div>
