@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/sonner"
 import { Button } from "@/components/ui/button"
 
 const Index = () => {
-  const [selectedFramework, setSelectedFramework] = useState(null);
+  const [selectedFramework, setSelectedFramework] = useState('ACT');
 
   const frameworks = {
     ACT: {
@@ -45,7 +45,7 @@ const Index = () => {
             <Button
               key={framework}
               onClick={() => handleFrameworkClick(framework)}
-              variant="outline"
+              variant={selectedFramework === framework ? "default" : "outline"}
             >
               {framework}
             </Button>
