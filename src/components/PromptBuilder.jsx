@@ -96,9 +96,14 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
         <pre className="bg-gray-100 p-4 rounded-md whitespace-pre-wrap mb-4">
           {generateXMLPrompt()}
         </pre>
-        <Button onClick={copyToClipboard}>
-          Copy to Clipboard
-        </Button>
+        <div className="flex space-x-4">
+          <Button onClick={copyToClipboard}>
+            Copy to Clipboard
+          </Button>
+          <Button as="a" href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer">
+            Open ChatGPT
+          </Button>
+        </div>
       </div>
     </div>
   );
