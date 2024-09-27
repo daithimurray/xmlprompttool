@@ -100,9 +100,9 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
           <Button onClick={copyToClipboard}>
             Copy to Clipboard
           </Button>
-          <Button as="a" href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer">
+          <a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
             Open ChatGPT
-          </Button>
+          </a>
         </div>
       </div>
     </div>
