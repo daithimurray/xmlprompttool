@@ -61,7 +61,12 @@ const Index = () => {
           initialSections={selectedFramework ? frameworks[selectedFramework].sections : []} 
           defaultPrompts={selectedFramework ? frameworks[selectedFramework].defaultPrompts : {}}
         />
-        <div className="text-center mt-8 text-sm text-gray-500">
+        <div className="text-center mt-8 mb-4">
+          <a href="https://chatgptforbeginners.co/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline mr-4">ChatGPT for Beginners</a>
+          <a href="https://advancedchatgpt.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline mr-4">Advanced ChatGPT</a>
+          <a href="https://chatgptframeworks.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">ChatGPT Frameworks</a>
+        </div>
+        <div className="text-center mt-4 text-sm text-gray-500">
           Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">David</a>
         </div>
       </div>
