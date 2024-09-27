@@ -28,7 +28,7 @@ const Index = () => {
     },
     RODES: {
       sections: ['role', 'objective', 'details', 'examples', 'style'],
-      helpText: 'RODES Framework:\nRole: What role should the AI play?\nObjective: What is the desired outcome?\nDetails: Specific information needed for context.\nExamples: Providing examples to illustrate expectations.\nStyle: Desired tone and style of communication.'
+      helpText: 'Role: What role should the AI play?\nObjective: What is the desired outcome?\nDetails: Specific information needed for context.\nExamples: Providing examples to illustrate expectations.\nStyle: Desired tone and style of communication.'
     }
   };
 
