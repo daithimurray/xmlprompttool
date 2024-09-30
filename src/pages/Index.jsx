@@ -61,8 +61,8 @@ const Index = () => {
           </div>
         )}
         <PromptBuilder 
-          initialSections={selectedFramework ? frameworks[selectedFramework].sections : []} 
-          defaultPrompts={selectedFramework ? frameworks[selectedFramework].defaultPrompts : {}}
+          selectedFramework={selectedFramework}
+          frameworks={frameworks}
         />
         <div className="text-center mt-8 mb-4">
           <a href="https://chatgptforbeginners.co/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline mr-4">ChatGPT for Beginners</a>

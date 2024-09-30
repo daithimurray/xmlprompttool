@@ -4,18 +4,45 @@ import PromptSection from './PromptSection';
 import { Button } from "@/components/ui/button"
 import { toast } from "sonner"
 
-const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
+const PromptBuilder = ({ selectedFramework, frameworks }) => {
   const [sections, setSections] = useState([]);
 
   useEffect(() => {
-    if (initialSections.length > 0) {
-      setSections(initialSections.map((section, index) => ({
-        id: `section-${index}`,
-        section: section,
-        prompt: defaultPrompts[section] || ''
-      })));
+    if (selectedFramework && frameworks[selectedFramework]) {
+      const frameworkSections = frameworks[selectedFramework].sections;
+      const defaultPrompts = frameworks[selectedFramework].defaultPrompts || {};
+
+      setSections(prevSections => {
+        if (prevSections.length === 0) {
+          // Initialize sections only if they haven't been set before
+          return frameworkSections.map((section, index) => ({
+            id: `section-${index}`,
+            section: section,
+            prompt: defaultPrompts[section] || ''
+          }));
+        } else {
+          // Preserve existing sections and add new ones if necessary
+          const updatedSections = [...prevSections];
+          frameworkSections.forEach((section, index) => {
+            if (!updatedSections[index]) {
+              updatedSections[index] = {
+                id: `section-${index}`,
+                section: section,
+                prompt: defaultPrompts[section] || ''
+              };
+            } else if (updatedSections[index].section !== section) {
+              updatedSections[index].section = section;
+              if (!updatedSections[index].prompt) {
+                updatedSections[index].prompt = defaultPrompts[section] || '';
+              }
+            }
+          });
+          // Remove extra sections if the new framework has fewer sections
+          return updatedSections.slice(0, frameworkSections.length);
+        }
+      });
     }
-  }, [JSON.stringify(initialSections), JSON.stringify(defaultPrompts)]);
+  }, [selectedFramework, frameworks]);
 
   const handleSectionChange = (index, field, value) => {
     setSections(prevSections => {
