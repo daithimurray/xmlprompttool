@@ -8,6 +8,10 @@ const PromptSection = ({ section, prompt, onChange, onDelete, index }) => {
   const sectionId = `section-${index}`;
   const promptId = `prompt-${index}`;
 
+  const handleInputChange = (field, value) => {
+    onChange(field, value);
+  };
+
   return (
     <div className="bg-white shadow-md rounded-lg p-4 mb-3 relative">
       <div className="absolute left-2 top-1/2 transform -translate-y-1/2 cursor-move">
@@ -22,7 +26,7 @@ const PromptSection = ({ section, prompt, onChange, onDelete, index }) => {
             type="text"
             id={sectionId}
             value={section}
-            onChange={(e) => onChange('section', e.target.value)}
+            onChange={(e) => handleInputChange('section', e.target.value)}
             className="w-full"
           />
         </div>
@@ -33,7 +37,7 @@ const PromptSection = ({ section, prompt, onChange, onDelete, index }) => {
           <Textarea
             id={promptId}
             value={prompt}
-            onChange={(e) => onChange('prompt', e.target.value)}
+            onChange={(e) => handleInputChange('prompt', e.target.value)}
             rows="2"
             className="w-full resize-none"
           />
