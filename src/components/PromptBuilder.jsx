@@ -15,7 +15,7 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
         prompt: defaultPrompts[section] || ''
       })));
     }
-  }, [initialSections, defaultPrompts]);
+  }, [JSON.stringify(initialSections), JSON.stringify(defaultPrompts)]);
 
   const handleSectionChange = (index, field, value) => {
     setSections(prevSections => {
@@ -50,12 +50,10 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
       return;
     }
 
-    setSections(prevSections => {
-      const items = Array.from(prevSections);
-      const [reorderedItem] = items.splice(result.source.index, 1);
-      items.splice(result.destination.index, 0, reorderedItem);
-      return items;
-    });
+    const items = Array.from(sections);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setSections(items);
   };
 
   return (
