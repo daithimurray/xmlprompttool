@@ -10,37 +10,11 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
   useEffect(() => {
     if (selectedFramework && frameworks[selectedFramework]) {
       const frameworkSections = frameworks[selectedFramework].sections;
-      const defaultPrompts = frameworks[selectedFramework].defaultPrompts || {};
-
-      setSections(prevSections => {
-        if (prevSections.length === 0) {
-          // Initialize sections only if they haven't been set before
-          return frameworkSections.map((section, index) => ({
-            id: `section-${index}`,
-            section: section,
-            prompt: defaultPrompts[section] || ''
-          }));
-        } else {
-          // Preserve existing sections and add new ones if necessary
-          const updatedSections = [...prevSections];
-          frameworkSections.forEach((section, index) => {
-            if (!updatedSections[index]) {
-              updatedSections[index] = {
-                id: `section-${index}`,
-                section: section,
-                prompt: defaultPrompts[section] || ''
-              };
-            } else if (updatedSections[index].section !== section) {
-              updatedSections[index].section = section;
-              if (!updatedSections[index].prompt) {
-                updatedSections[index].prompt = defaultPrompts[section] || '';
-              }
-            }
-          });
-          // Remove extra sections if the new framework has fewer sections
-          return updatedSections.slice(0, frameworkSections.length);
-        }
-      });
+      setSections(frameworkSections.map((section, index) => ({
+        id: `section-${index}`,
+        section: section.name,
+        prompt: section.defaultPrompt
+      })));
     }
   }, [selectedFramework, frameworks]);
 

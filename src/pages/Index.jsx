@@ -8,26 +8,50 @@ const Index = () => {
 
   const frameworks = {
     ACT: {
-      sections: ['act', 'context', 'task'],
-      helpText: 'Act: The persona or role the AI should assume.\nContext: Why the task is necessary and its significance.\nTask: What task the AI should perform.',
-      defaultPrompts: {
-        act: 'Act as a'
-      }
+      sections: [
+        { name: 'act', defaultPrompt: 'Act as a' },
+        { name: 'context', defaultPrompt: '' },
+        { name: 'task', defaultPrompt: '' }
+      ],
+      helpText: 'Act: The persona or role the AI should assume.\nContext: Why the task is necessary and its significance.\nTask: What task the AI should perform.'
     },
     COSTAR: {
-      sections: ['context', 'objective', 'style', 'tone', 'audience', 'response'],
+      sections: [
+        { name: 'context', defaultPrompt: '' },
+        { name: 'objective', defaultPrompt: '' },
+        { name: 'style', defaultPrompt: '' },
+        { name: 'tone', defaultPrompt: '' },
+        { name: 'audience', defaultPrompt: '' },
+        { name: 'response', defaultPrompt: '' }
+      ],
       helpText: 'Context: Background information relevant to the task.\nObjective: Clear definition of the task.\nStyle: Desired writing style or voice.\nTone: Emotional tone of the response.\nAudience: Identification of the target audience.\nResponse: Format of the output.'
     },
     RISEN: {
-      sections: ['role', 'input', 'structure', 'engagement', 'nextSteps'],
+      sections: [
+        { name: 'role', defaultPrompt: '' },
+        { name: 'input', defaultPrompt: '' },
+        { name: 'structure', defaultPrompt: '' },
+        { name: 'engagement', defaultPrompt: '' },
+        { name: 'nextSteps', defaultPrompt: '' }
+      ],
       helpText: 'Role: The persona or role the AI should assume.\nInput: Specific details or questions to guide responses.\nStructure: Desired format for the output.\nEngagement: Interaction style with users.\nNext Steps: Guidance on follow-up actions or questions.'
     },
     GCA: {
-      sections: ['goal', 'context', 'audience'],
+      sections: [
+        { name: 'goal', defaultPrompt: '' },
+        { name: 'context', defaultPrompt: '' },
+        { name: 'audience', defaultPrompt: '' }
+      ],
       helpText: 'Goal: What task the AI should perform.\nContext: Why the task is necessary and its significance.\nAudience: Who will read or benefit from the output.'
     },
     RODES: {
-      sections: ['role', 'objective', 'details', 'examples', 'style'],
+      sections: [
+        { name: 'role', defaultPrompt: '' },
+        { name: 'objective', defaultPrompt: '' },
+        { name: 'details', defaultPrompt: '' },
+        { name: 'examples', defaultPrompt: '' },
+        { name: 'style', defaultPrompt: '' }
+      ],
       helpText: 'Role: What role should the AI play?\nObjective: What is the desired outcome?\nDetails: Specific information needed for context.\nExamples: Providing examples to illustrate expectations.\nStyle: Desired tone and style of communication.'
     }
   };
