@@ -77,6 +77,7 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
                         prompt={section.prompt}
                         onChange={(field, value) => handleSectionChange(index, field, value)}
                         onDelete={() => deleteSection(index)}
+                        index={index}
                       />
                     </div>
                   )}
