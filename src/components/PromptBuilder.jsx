@@ -18,18 +18,19 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
   }, [initialSections, defaultPrompts]);
 
   const handleSectionChange = (index, field, value) => {
-    const newSections = [...sections];
-    newSections[index][field] = value;
-    setSections(newSections);
+    setSections(prevSections => {
+      const newSections = [...prevSections];
+      newSections[index] = { ...newSections[index], [field]: value };
+      return newSections;
+    });
   };
 
   const addSection = () => {
-    setSections([...sections, { id: `section-${Date.now()}`, section: '', prompt: '' }]);
+    setSections(prevSections => [...prevSections, { id: `section-${Date.now()}`, section: '', prompt: '' }]);
   };
 
   const deleteSection = (index) => {
-    const newSections = sections.filter((_, i) => i !== index);
-    setSections(newSections);
+    setSections(prevSections => prevSections.filter((_, i) => i !== index));
   };
 
   const generateXMLPrompt = () => {
@@ -49,11 +50,12 @@ const PromptBuilder = ({ initialSections = [], defaultPrompts = {} }) => {
       return;
     }
 
-    const items = Array.from(sections);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    setSections(items);
+    setSections(prevSections => {
+      const items = Array.from(prevSections);
+      const [reorderedItem] = items.splice(result.source.index, 1);
+      items.splice(result.destination.index, 0, reorderedItem);
+      return items;
+    });
   };
 
   return (
