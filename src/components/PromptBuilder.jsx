@@ -18,6 +18,16 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     audience: { selected: false, value: 'general' },
     includeExamples: { selected: false, value: 'no' },
     keywords: { selected: false, value: '' },
+    urgency: { selected: false, value: 'medium' },
+    culture: { selected: false, value: '' },
+    historicalContext: { selected: false, value: 'no' },
+    structure: { selected: false, value: '' },
+    useAnalogies: { selected: false, value: 'no' },
+    skillLevel: { selected: false, value: 'intermediate' },
+    includeCitations: { selected: false, value: 'no' },
+    visualAids: { selected: false, value: 'no' },
+    toneVariation: { selected: false, value: '' },
+    includeCounterarguments: { selected: false, value: 'no' },
   });
 
   useEffect(() => {
@@ -57,9 +67,22 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
       .map(([param, { value }]) => {
         switch (param) {
           case 'keywords':
-            return `| keywords: ${value} |`;
-          case 'includeExamples':
-            return `| include examples: ${value} |`;
+          case 'culture':
+          case 'structure':
+          case 'toneVariation':
+            return `| ${param}: ${value} |`;
+          case 'historicalContext':
+            return `| historical context: ${value} |`;
+          case 'useAnalogies':
+            return `| use analogies: ${value} |`;
+          case 'skillLevel':
+            return `| skill level: ${value} |`;
+          case 'includeCitations':
+            return `| include citations: ${value} |`;
+          case 'visualAids':
+            return `| visual aids: ${value} |`;
+          case 'includeCounterarguments':
+            return `| include counterarguments: ${value} |`;
           default:
             return `| ${param}: ${value} |`;
         }
