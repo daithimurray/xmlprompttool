@@ -11,6 +11,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'length':
       case 'creativity':
       case 'detail':
+      case 'urgency':
         return ['low', 'medium', 'high'];
       case 'format':
         return ['paragraph', 'bullet points', 'numbered list'];
@@ -21,6 +22,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'audience':
         return ['general', 'experts', 'beginners', 'children'];
       case 'includeExamples':
+      case 'includeCounterarguments':
         return ['yes', 'no'];
       default:
         return [];
