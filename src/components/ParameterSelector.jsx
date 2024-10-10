@@ -11,7 +11,6 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'length':
       case 'creativity':
       case 'detail':
-      case 'urgency':
         return ['low', 'medium', 'high'];
       case 'format':
         return ['paragraph', 'bullet points', 'numbered list'];
@@ -22,20 +21,11 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'audience':
         return ['general', 'experts', 'beginners', 'children'];
       case 'includeExamples':
-      case 'historicalContext':
-      case 'useAnalogies':
-      case 'includeCitations':
-      case 'visualAids':
-      case 'includeCounterarguments':
         return ['yes', 'no'];
-      case 'skillLevel':
-        return ['beginner', 'intermediate', 'advanced'];
       default:
         return [];
     }
   };
-
-  const isTextInput = ['keywords', 'culture', 'structure', 'toneVariation'].includes(param);
 
   return (
     <div className="flex items-center space-x-2">
@@ -50,12 +40,12 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       >
         {param.charAt(0).toUpperCase() + param.slice(1)}
       </label>
-      {isTextInput ? (
+      {param === 'keywords' ? (
         <Input
           type="text"
           value={value}
           onChange={(e) => onChange(param, selected, e.target.value)}
-          placeholder={`Enter ${param}`}
+          placeholder="Enter keywords"
           className="ml-2"
         />
       ) : (
