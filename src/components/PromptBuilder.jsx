@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PromptSection from './PromptSection';
+import ParameterSelector from './ParameterSelector';
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { toast } from "sonner"
 
 const PromptBuilder = ({ selectedFramework, frameworks }) => {
   const [sections, setSections] = useState([]);
   const [parameters, setParameters] = useState({
-    tone: false,
-    length: false,
-    creativity: false,
-    format: false,
-    perspective: false,
-    sentiment: false,
-    detail: false,
-    audience: false,
-    includeExamples: false,
-    keywords: false,
+    tone: { selected: false, value: 'professional' },
+    length: { selected: false, value: 'medium' },
+    creativity: { selected: false, value: 'medium' },
+    format: { selected: false, value: 'paragraph' },
+    perspective: { selected: false, value: 'third person' },
+    sentiment: { selected: false, value: 'neutral' },
+    detail: { selected: false, value: 'medium' },
+    audience: { selected: false, value: 'general' },
+    includeExamples: { selected: false, value: 'no' },
+    keywords: { selected: false, value: '' },
   });
 
   useEffect(() => {
@@ -53,20 +53,15 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
       .join('\n\n');
 
     const selectedParameters = Object.entries(parameters)
-      .filter(([_, isSelected]) => isSelected)
-      .map(([param]) => {
+      .filter(([_, { selected }]) => selected)
+      .map(([param, { value }]) => {
         switch (param) {
-          case 'tone': return '| tone: [desired tone] |';
-          case 'length': return '| length: [short/medium/long] |';
-          case 'creativity': return '| creativity: [low/medium/high] |';
-          case 'format': return '| format: [desired format] |';
-          case 'perspective': return '| perspective: [first person/third person] |';
-          case 'sentiment': return '| sentiment: [positive/negative/neutral] |';
-          case 'detail': return '| detail: [high/medium/low] |';
-          case 'audience': return '| audience: [target audience] |';
-          case 'includeExamples': return '| include examples: yes/no |';
-          case 'keywords': return '| keywords: [list of keywords] |';
-          default: return '';
+          case 'keywords':
+            return `| keywords: ${value} |`;
+          case 'includeExamples':
+            return `| include examples: ${value} |`;
+          default:
+            return `| ${param}: ${value} |`;
         }
       })
       .join('\n');
@@ -95,8 +90,11 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     setSections(items);
   };
 
-  const handleParameterChange = (param) => {
-    setParameters(prev => ({ ...prev, [param]: !prev[param] }));
+  const handleParameterChange = (param, selected, value) => {
+    setParameters(prev => ({
+      ...prev,
+      [param]: { selected, value: value !== undefined ? value : prev[param].value }
+    }));
   };
 
   return (
@@ -138,20 +136,14 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
       <div className="bg-white shadow-md rounded-lg p-4 mb-4">
         <h2 className="text-xl font-semibold mb-4">Additional Parameters</h2>
         <div className="grid grid-cols-2 gap-4">
-          {Object.keys(parameters).map((param) => (
-            <div key={param} className="flex items-center space-x-2">
-              <Checkbox
-                id={param}
-                checked={parameters[param]}
-                onCheckedChange={() => handleParameterChange(param)}
-              />
-              <label
-                htmlFor={param}
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              >
-                {param.charAt(0).toUpperCase() + param.slice(1)}
-              </label>
-            </div>
+          {Object.entries(parameters).map(([param, { selected, value }]) => (
+            <ParameterSelector
+              key={param}
+              param={param}
+              selected={selected}
+              value={value}
+              onChange={handleParameterChange}
+            />
           ))}
         </div>
       </div>
