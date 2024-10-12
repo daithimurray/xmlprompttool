@@ -7,7 +7,13 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
   const getOptions = (param) => {
     switch (param) {
       case 'tone':
-        return ['professional', 'casual', 'formal', 'friendly'];
+        return [
+          'professional', 'casual', 'formal', 'friendly',
+          'Friendly', 'Thrilling', 'Exciting', 'Adventurous',
+          'Innovative', 'Cutting-edge', 'Trendsetting', 'Trendy',
+          'Revolutionary', 'Pioneering', 'Trailblazing', 'Progressive',
+          'Established', 'Stable', 'Consistent'
+        ];
       case 'length':
       case 'creativity':
       case 'detail':
