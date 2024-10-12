@@ -15,6 +15,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
         return ['low', 'medium', 'high'];
       case 'format':
         return [
+          'Slack - no emojis', 'Slack - some emojis', 'Slack - lots of emojis',
           'paragraph', 'bullet points', 'numbered list',
           'Table', 'List', 'Summary', 'Plain text', 'Quote',
           'CSV', 'XML', 'JSON', 'Markdown', 'Image', 'Audio',
