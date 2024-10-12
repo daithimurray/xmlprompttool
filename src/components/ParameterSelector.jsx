@@ -14,7 +14,12 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'urgency':
         return ['low', 'medium', 'high'];
       case 'format':
-        return ['paragraph', 'bullet points', 'numbered list'];
+        return [
+          'paragraph', 'bullet points', 'numbered list',
+          'Table', 'List', 'Summary', 'Plain text', 'Quote',
+          'CSV', 'XML', 'JSON', 'Markdown', 'Image', 'Audio',
+          'PowerPoint', 'Excel', 'Bulleted Points', 'Spreadsheet', 'Article'
+        ];
       case 'style':
         return [
           'Professional', 'Informative', 'Technical', 'Fact-based',
