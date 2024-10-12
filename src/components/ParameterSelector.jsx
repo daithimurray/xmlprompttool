@@ -21,8 +21,13 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
         return ['low', 'medium', 'high'];
       case 'format':
         return ['paragraph', 'bullet points', 'numbered list'];
-      case 'perspective':
-        return ['first person', 'second person', 'third person'];
+      case 'style':
+        return [
+          'Professional', 'Informative', 'Technical', 'Fact-based',
+          'Comparative', 'Conversational', 'Storytelling', 'Humorous',
+          'Emotive', 'Engaging', 'Instructional', 'Ordering',
+          'Enthusiastic', 'Commanding', 'Casual', 'Conversational'
+        ];
       case 'sentiment':
         return ['positive', 'negative', 'neutral'];
       case 'audience':

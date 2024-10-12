@@ -12,7 +12,7 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     length: { selected: false, value: 'medium' },
     creativity: { selected: false, value: 'medium' },
     format: { selected: false, value: 'paragraph' },
-    perspective: { selected: false, value: 'third person' },
+    style: { selected: false, value: 'Professional' },
     sentiment: { selected: false, value: 'neutral' },
     detail: { selected: false, value: 'medium' },
     audience: { selected: false, value: 'general' },
