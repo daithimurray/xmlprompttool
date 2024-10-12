@@ -7,13 +7,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
   const getOptions = (param) => {
     switch (param) {
       case 'tone':
-        return [
-          'professional', 'casual', 'formal', 'friendly',
-          'Friendly', 'Thrilling', 'Exciting', 'Adventurous',
-          'Innovative', 'Cutting-edge', 'Trendsetting', 'Trendy',
-          'Revolutionary', 'Pioneering', 'Trailblazing', 'Progressive',
-          'Established', 'Stable', 'Consistent'
-        ];
+        return ['Professional', 'Casual', 'Friendly', 'Formal'];
       case 'length':
       case 'creativity':
       case 'detail':
@@ -26,7 +20,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
           'Professional', 'Informative', 'Technical', 'Fact-based',
           'Comparative', 'Conversational', 'Storytelling', 'Humorous',
           'Emotive', 'Engaging', 'Instructional', 'Ordering',
-          'Enthusiastic', 'Commanding', 'Casual', 'Conversational'
+          'Enthusiastic', 'Commanding', 'Casual'
         ];
       case 'sentiment':
         return ['positive', 'negative', 'neutral'];
