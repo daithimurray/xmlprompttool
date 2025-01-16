@@ -34,6 +34,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
         return ['general', 'experts', 'beginners', 'children'];
       case 'includeExamples':
       case 'includeCounterarguments':
+      case 'checklist':
         return ['yes', 'no'];
       default:
         return [];

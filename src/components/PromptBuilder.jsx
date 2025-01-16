@@ -20,6 +20,7 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     keywords: { selected: false, value: '' },
     urgency: { selected: false, value: 'medium' },
     includeCounterarguments: { selected: false, value: 'no' },
+    checklist: { selected: false, value: 'no' },
   });
 
   useEffect(() => {
@@ -79,6 +80,10 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
 
     if (selectedParameters) {
       xmlPrompt += '\n\n<parameters>\n' + selectedParameters + '\n</parameters>';
+    }
+
+    if (parameters.checklist.selected && parameters.checklist.value === 'yes') {
+      xmlPrompt += '\n\n<checklist>\nStart by analyzing the task and breaking it down into a clear, numbered list of single, actionable items. After addressing each item in sequence, review the completed list to ensure all items are handled thoroughly and to the highest standard. If any item is incomplete or can be improved, revisit and refine it before finalizing the output.\n</checklist>';
     }
 
     return xmlPrompt;
