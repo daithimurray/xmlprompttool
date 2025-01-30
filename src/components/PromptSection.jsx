@@ -40,6 +40,7 @@ const PromptSection = ({ section, prompt, onChange, onDelete, index }) => {
             onChange={(e) => handleInputChange('prompt', e.target.value)}
             rows="2"
             className="w-full resize-none"
+            placeholder="You are a {{job title}} with {{years of experience}} in {{industry}}. You specialize in {{specific expertise or skills}} and communicate in a {{tone or style}} manner. Your goal is to {{primary objective of the persona}}."
           />
         </div>
         <Button
