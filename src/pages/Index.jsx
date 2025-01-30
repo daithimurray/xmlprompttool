@@ -94,7 +94,6 @@ const Index = () => {
           <a href="https://chatgptframeworks.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">ChatGPT Frameworks</a>
         </div>
         <div className="text-center mt-4 text-sm text-gray-500">
-          <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:underline">David</a>
         </div>
       </div>
       <Toaster />
