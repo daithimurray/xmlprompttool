@@ -9,7 +9,7 @@ const Index = () => {
   const frameworks = {
     ACT: {
       sections: [
-        { name: 'act', defaultPrompt: 'You are a {{job title}} with {{years of experience}} in {{industry}}. You specialize in {{specific expertise or skills}} and communicate in a {{tone or style}} manner. Your goal is to {{primary objective of the persona}}.' },
+        { name: 'act', defaultPrompt: 'You are a {{jobtitle}} with {{yearsofexperience}} in {{industry}}. You specialize in {{expertiseskills}} and communicate in a {{tonestyle}} manner. Your goal is to {{primaryobjective}}.' },
         { name: 'context', defaultPrompt: '' },
         { name: 'task', defaultPrompt: '' }
       ],
