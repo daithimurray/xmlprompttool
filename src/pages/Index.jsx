@@ -13,7 +13,7 @@ const Index = () => {
         { name: 'context', defaultPrompt: '1 - {{contextitem}}\n2 - {{contextitem}}\n3 - {{contextitem}}' },
         { name: 'task', defaultPrompt: 'Your task is to {{taskdetails}}. Focus on {{keypriorities}}. Ensure that your answer is {{constraints}}.\n\nConsider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If you need any further context to give the best / most valuable output - please ask me relevant questions.' }
       ],
-      helpText: 'Act: Define the specific role, profession, or character the AI should embody (e.g., "Act as a marketing expert").\nContext: Provide relevant background information and circumstances.\nTask: Clearly state what you want the AI to do or accomplish.'
+      helpText: 'Act: Define the specific role, profession, or character the AI should embody.\nContext: Provide relevant background information and circumstances.\nTask: Clearly state what you want the AI to do or accomplish.'
     },
     COSTAR: {
       sections: [
