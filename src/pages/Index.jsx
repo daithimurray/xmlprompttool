@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import PromptBuilder from '../components/PromptBuilder';
 import { Toaster } from "@/components/ui/sonner"
 import { Button } from "@/components/ui/button"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 
 const Index = () => {
   const [selectedFramework, setSelectedFramework] = useState('ACT');
@@ -85,14 +79,10 @@ const Index = () => {
           ))}
         </div>
         {selectedFramework && (
-          <Accordion type="single" collapsible className="bg-white shadow-md rounded-lg p-4 mb-8">
-            <AccordionItem value="framework-help">
-              <AccordionTrigger className="text-xl font-semibold">{selectedFramework} Framework</AccordionTrigger>
-              <AccordionContent>
-                <p className="whitespace-pre-wrap">{frameworks[selectedFramework].helpText}</p>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          <div className="bg-white shadow-md rounded-lg p-4 mb-8">
+            <h2 className="text-xl font-semibold mb-2">{selectedFramework} Framework</h2>
+            <p className="whitespace-pre-wrap">{frameworks[selectedFramework].helpText}</p>
+          </div>
         )}
         <PromptBuilder 
           selectedFramework={selectedFramework}
