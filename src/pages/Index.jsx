@@ -13,7 +13,7 @@ const Index = () => {
         { name: 'context', defaultPrompt: '' },
         { name: 'task', defaultPrompt: '' }
       ],
-      helpText: 'Act: The persona or role the AI should assume.\nContext: Why the task is necessary and its significance.\nTask: What task the AI should perform.'
+      helpText: 'Act: Define the specific role, profession, or character the AI should embody (e.g., "Act as a marketing expert").\nContext: Provide relevant background information and circumstances.\nTask: Clearly state what you want the AI to do or accomplish.'
     },
     COSTAR: {
       sections: [
