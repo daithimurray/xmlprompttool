@@ -3,6 +3,12 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { GripVertical } from 'lucide-react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 const PromptSection = ({ section, prompt, onChange, onDelete, index }) => {
   const sectionId = `section-${index}`;
@@ -18,37 +24,43 @@ const PromptSection = ({ section, prompt, onChange, onDelete, index }) => {
         <GripVertical size={20} />
       </div>
       <div className="ml-8">
-        <div className="mb-2">
-          <label htmlFor={sectionId} className="block text-sm font-medium text-gray-700 mb-1">
-            Section
-          </label>
-          <Input
-            type="text"
-            id={sectionId}
-            value={section}
-            onChange={(e) => handleInputChange('section', e.target.value)}
-            className="w-full"
-          />
-        </div>
-        <div className="mb-2">
-          <label htmlFor={promptId} className="block text-sm font-medium text-gray-700 mb-1">
-            Prompt
-          </label>
-          <Textarea
-            id={promptId}
-            value={prompt}
-            onChange={(e) => handleInputChange('prompt', e.target.value)}
-            rows="2"
-            className="w-full resize-none"
-          />
-        </div>
-        <Button
-          onClick={onDelete}
-          variant="destructive"
-          size="sm"
-        >
-          Delete Section
-        </Button>
+        <Accordion type="single" collapsible className="w-full">
+          <AccordionItem value={sectionId}>
+            <AccordionTrigger>
+              <Input
+                type="text"
+                id={sectionId}
+                value={section}
+                onChange={(e) => handleInputChange('section', e.target.value)}
+                className="w-full"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </AccordionTrigger>
+            <AccordionContent>
+              <div className="mt-2">
+                <label htmlFor={promptId} className="block text-sm font-medium text-gray-700 mb-1">
+                  Prompt
+                </label>
+                <Textarea
+                  id={promptId}
+                  value={prompt}
+                  onChange={(e) => handleInputChange('prompt', e.target.value)}
+                  rows="2"
+                  className="w-full resize-none"
+                />
+              </div>
+              <div className="mt-2">
+                <Button
+                  onClick={onDelete}
+                  variant="destructive"
+                  size="sm"
+                >
+                  Delete Section
+                </Button>
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </div>
   );
