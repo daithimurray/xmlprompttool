@@ -91,6 +91,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
 
   const isBooleanParameter = getOptions(param) === null;
   const displayName = param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1');
+  const isAdvancedFeature = ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist'].includes(param);
 
   const handleCheckboxChange = (checked) => {
     onChange(param, checked, isBooleanParameter ? (checked ? 'yes' : 'no') : param === 'tone' ? 'Professional' : value);
@@ -99,24 +100,44 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
   return (
     <div className="flex items-center gap-0.5 p-1 rounded-lg hover:bg-gray-50 transition-colors">
       <div className="flex items-center min-w-[100px]">
-        <span className="flex items-center gap-1">
-          {getIcon(param)}
-          <label
-            htmlFor={param}
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          >
-            {displayName}
-          </label>
-        </span>
+        {isAdvancedFeature ? (
+          <span className="flex items-center gap-1">
+            <Checkbox
+              id={param}
+              checked={selected}
+              onCheckedChange={handleCheckboxChange}
+              className="data-[state=checked]:bg-primary"
+            />
+            {getIcon(param)}
+            <label
+              htmlFor={param}
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              {displayName}
+            </label>
+          </span>
+        ) : (
+          <span className="flex items-center gap-1">
+            {getIcon(param)}
+            <label
+              htmlFor={param}
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+              {displayName}
+            </label>
+          </span>
+        )}
       </div>
       
       <div className="flex items-center gap-0.5 flex-1">
-        <Checkbox
-          id={param}
-          checked={selected}
-          onCheckedChange={handleCheckboxChange}
-          className="data-[state=checked]:bg-primary"
-        />
+        {!isAdvancedFeature && (
+          <Checkbox
+            id={param}
+            checked={selected}
+            onCheckedChange={handleCheckboxChange}
+            className="data-[state=checked]:bg-primary"
+          />
+        )}
         
         {!isBooleanParameter && (
           param === 'keywords' ? (
