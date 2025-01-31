@@ -109,45 +109,34 @@ const Index = () => {
 
         <Separator className="my-8 bg-gray-600" />
 
-        <div className="flex justify-between items-center mt-8 mb-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-grow">
-            <a 
-              href="https://chatgptforbeginners.co/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
-            >
-              <BookOpen className="h-5 w-5 mr-2" />
-              <span>ChatGPT for Beginners</span>
-            </a>
-            <a 
-              href="https://advancedchatgpt.com/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
-            >
-              <Code2 className="h-5 w-5 mr-2" />
-              <span>Advanced ChatGPT</span>
-            </a>
-            <div className="flex items-center justify-between p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0">
-              <a 
-                href="https://claude.ai/new" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-300 hover:text-[#10a37f]"
-              >
-                Open Claude
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/davidmichaelmurray" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-gray-300 hover:text-[#10a37f]"
-              >
-                Built by David
-              </a>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-4">
+          <a 
+            href="https://chatgptforbeginners.co/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
+          >
+            <BookOpen className="h-5 w-5 mr-2" />
+            <span>ChatGPT for Beginners</span>
+          </a>
+          <a 
+            href="https://advancedchatgpt.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
+          >
+            <Code2 className="h-5 w-5 mr-2" />
+            <span>Advanced ChatGPT</span>
+          </a>
+          <a 
+            href="https://chatgptframeworks.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
+          >
+            <Brain className="h-5 w-5 mr-2" />
+            <span>ChatGPT Frameworks</span>
+          </a>
         </div>
       </div>
       <Toaster />
