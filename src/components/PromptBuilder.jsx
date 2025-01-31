@@ -71,6 +71,8 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
 
   return (
     <div>
+      <h2 className="text-2xl font-semibold text-white mb-4 text-center">STEP 2️⃣ - WRITE YOUR PROMPT, USING SECTIONS</h2>
+      
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable droppableId="sections">
           {(provided) => (
