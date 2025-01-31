@@ -27,6 +27,14 @@ const GeneratedXMLPrompt = ({ xmlPrompt }) => {
         >
           Open ChatGPT
         </a>
+        <a 
+          href="https://claude.ai/new" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-blue-500 hover:underline flex items-center"
+        >
+          Open Claude
+        </a>
       </div>
     </div>
   );
