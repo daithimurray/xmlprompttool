@@ -58,7 +58,13 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
       .join('\n\n');
 
     const selectedParameters = Object.entries(parameters)
-      .filter(([_, { selected }]) => selected)
+      .filter(([param, { selected }]) => selected)
+      // Filter out improvePrompt and createPromptChain when they're being used to wrap the prompt
+      .filter(([param, { value }]) => {
+        if (param === 'improvePrompt' && value === 'yes' && parameters.improvePrompt.selected) return false;
+        if (param === 'createPromptChain' && value === 'yes' && parameters.createPromptChain.selected) return false;
+        return true;
+      })
       .map(([param, { value }]) => {
         switch (param) {
           case 'keywords':
