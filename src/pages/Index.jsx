@@ -64,19 +64,19 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f8f9ff] to-[#f0f2ff] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#F1F0FB] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-[#2d3142] mb-4">XML Prompt Builder</h1>
-          <p className="text-lg text-[#4f5469] mb-6">
+          <h1 className="text-4xl font-bold text-[#1A1F2C] mb-4">XML Prompt Builder</h1>
+          <p className="text-lg text-[#403E43] mb-6">
             When prompts involve multiple components like context, instructions, and examples, XML tags can hugely increase clarity, accuracy, flexibility and parseability.
           </p>
-          <p className="text-sm text-[#9b87f5]">
-            Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-[#6c5ce7] hover:text-[#5b4bc4] hover:underline">David</a>
+          <p className="text-sm text-[#7E69AB]">
+            Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline">David</a>
           </p>
         </div>
 
-        <Card className="p-6 mb-8 shadow-lg bg-white/80 backdrop-blur-sm">
+        <Card className="p-6 mb-8 shadow-lg bg-white border border-[#E5DEFF]">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {Object.keys(frameworks).map((framework) => (
               <Button
@@ -85,8 +85,8 @@ const Index = () => {
                 variant={selectedFramework === framework ? "default" : "outline"}
                 className={`w-full ${
                   selectedFramework === framework 
-                    ? 'bg-[#9b87f5] hover:bg-[#8875e3] text-white' 
-                    : 'border-[#9b87f5] text-[#9b87f5] hover:bg-[#9b87f5] hover:text-white'
+                    ? 'bg-[#7E69AB] hover:bg-[#6E59A5] text-white border-[#7E69AB]' 
+                    : 'border-[#7E69AB] text-[#7E69AB] hover:bg-[#7E69AB] hover:text-white'
                 }`}
               >
                 {framework}
@@ -96,12 +96,12 @@ const Index = () => {
         </Card>
 
         {selectedFramework && (
-          <Card className="bg-white/80 backdrop-blur-sm shadow-lg p-6 mb-8 border border-[#e0e3ff]">
-            <h2 className="text-xl font-semibold mb-4 flex items-center text-[#2d3142]">
-              <Brain className="mr-2 h-5 w-5 text-[#9b87f5]" />
+          <Card className="bg-white shadow-lg p-6 mb-8 border border-[#E5DEFF]">
+            <h2 className="text-xl font-semibold mb-4 flex items-center text-[#1A1F2C]">
+              <Brain className="mr-2 h-5 w-5 text-[#7E69AB]" />
               {selectedFramework} Framework
             </h2>
-            <p className="whitespace-pre-wrap text-[#4f5469]">{frameworks[selectedFramework].helpText}</p>
+            <p className="whitespace-pre-wrap text-[#403E43]">{frameworks[selectedFramework].helpText}</p>
           </Card>
         )}
 
@@ -110,14 +110,14 @@ const Index = () => {
           frameworks={frameworks}
         />
 
-        <Separator className="my-8 bg-[#e0e3ff]" />
+        <Separator className="my-8 bg-[#E5DEFF]" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-4">
           <a 
             href="https://chatgptforbeginners.co/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center p-4 bg-white/80 backdrop-blur-sm rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#e0e3ff] text-[#4f5469] hover:text-[#9b87f5]"
+            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#E5DEFF] text-[#403E43] hover:text-[#7E69AB]"
           >
             <BookOpen className="h-5 w-5 mr-2" />
             <span>ChatGPT for Beginners</span>
@@ -126,7 +126,7 @@ const Index = () => {
             href="https://advancedchatgpt.com/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center p-4 bg-white/80 backdrop-blur-sm rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#e0e3ff] text-[#4f5469] hover:text-[#9b87f5]"
+            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#E5DEFF] text-[#403E43] hover:text-[#7E69AB]"
           >
             <Code2 className="h-5 w-5 mr-2" />
             <span>Advanced ChatGPT</span>
@@ -135,7 +135,7 @@ const Index = () => {
             href="https://chatgptframeworks.com/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center p-4 bg-white/80 backdrop-blur-sm rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#e0e3ff] text-[#4f5469] hover:text-[#9b87f5]"
+            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#E5DEFF] text-[#403E43] hover:text-[#7E69AB]"
           >
             <Brain className="h-5 w-5 mr-2" />
             <span>ChatGPT Frameworks</span>
