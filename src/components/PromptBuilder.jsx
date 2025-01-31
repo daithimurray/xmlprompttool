@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PromptSection from './PromptSection';
-import ParameterSelector from './ParameterSelector';
-import { Button } from "@/components/ui/button"
-import { toast } from "sonner"
+import PromptParameters from './PromptParameters';
+import GeneratedXMLPrompt from './GeneratedXMLPrompt';
+import { generateXMLPrompt } from '../utils/xmlPromptGenerator';
+import { Button } from "@/components/ui/button";
 
 const PromptBuilder = ({ selectedFramework, frameworks }) => {
   const [sections, setSections] = useState([]);
@@ -52,95 +53,8 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     setSections(prevSections => prevSections.filter((_, i) => i !== index));
   };
 
-  const generateXMLPrompt = () => {
-    let basePrompt = sections
-      .map(({ section, prompt }) => `<${section}>\n${prompt}\n</${section}>`)
-      .join('\n\n');
-
-    const selectedParameters = Object.entries(parameters)
-      .filter(([param, { selected }]) => selected)
-      // Filter out improvePrompt and createPromptChain when they're being used to wrap the prompt
-      .filter(([param, { value }]) => {
-        if (param === 'improvePrompt' && value === 'yes' && parameters.improvePrompt.selected) return false;
-        if (param === 'createPromptChain' && value === 'yes' && parameters.createPromptChain.selected) return false;
-        return true;
-      })
-      .map(([param, { value }]) => {
-        switch (param) {
-          case 'keywords':
-            return `| ${param}: ${value} |`;
-          case 'urgency':
-            return `| ${param}: ${value} |`;
-          case 'includeCounterarguments':
-            return `| include counterarguments: ${value} |`;
-          case 'creativity':
-            const temperatureMap = {
-              low: '0.1',
-              medium: '0.5',
-              high: '0.9'
-            };
-            return `| temperature: ${temperatureMap[value]} |`;
-          default:
-            return `| ${param}: ${value} |`;
-        }
-      })
-      .join('\n');
-
-    let xmlPrompt = basePrompt;
-
-    if (selectedParameters) {
-      xmlPrompt += '\n\n<parameters>\n' + selectedParameters + '\n</parameters>';
-    }
-
-    if (parameters.checklist.selected && parameters.checklist.value === 'yes') {
-      xmlPrompt += '\n\n<checklist>\nStart by analyzing the task and breaking it down into a clear, numbered list of single, actionable items. After addressing each item in sequence, review the completed list to ensure all items are handled thoroughly and to the highest standard. If any item is incomplete or can be improved, revisit and refine it before finalizing the output.\n</checklist>';
-    }
-
-    if (parameters.improvePrompt.selected && parameters.improvePrompt.value === 'yes') {
-      const improvementWrapper = `<act>
-You are a {{prompt engineer}} with {{huge experience}} in {{writing prompts for LLMs}}.
-</act>
-
-<task>
-Your task is to {{take the prompt below and improve it for a LLM}}. Focus on {{making it clear and understandable for LLMs to process and deliver the best outputs}}. 
-
-Consider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If you need any further context to give the best / most valuable output - please ask me relevant questions.
-</task>
-
-"${xmlPrompt}"`;
-      
-      return improvementWrapper;
-    }
-
-    if (parameters.createPromptChain.selected && parameters.createPromptChain.value === 'yes') {
-      const chainWrapper = `<act>
-You are a {{prompt engineer}} with {{huge experience}} in {{writing prompts for LLMs}}.
-</act>
-
-<task>
-Your task is to {{take the prompt below and create a chain of sequential prompts that each build out the output of the previous ones. Each prompt should focus on a single element of the overall goal of the original promt}}. Focus on {{making it clear and understandable for LLMs to process and deliver the best outputs}}. The goal is that by breaking down the larger problem into small, chained prompts, the final output is better than just doing one large one-shot prompt
-
-Consider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If additional context is required for the most valuable output, ask targeted questions before proceeding. 
-</task>
-
-"${xmlPrompt}"`;
-      
-      return chainWrapper;
-    }
-
-    return xmlPrompt;
-  };
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(generateXMLPrompt())
-      .then(() => toast.success("Copied to clipboard!"))
-      .catch(() => toast.error("Failed to copy"));
-  };
-
   const onDragEnd = (result) => {
-    if (!result.destination) {
-      return;
-    }
+    if (!result.destination) return;
 
     const items = Array.from(sections);
     const [reorderedItem] = items.splice(result.source.index, 1);
@@ -185,40 +99,19 @@ Consider previous discussions, existing knowledge, and any necessary constraints
           )}
         </Droppable>
       </DragDropContext>
-      <Button
-        onClick={addSection}
-        className="mb-4"
-      >
+      
+      <Button onClick={addSection} className="mb-4">
         Add Section
       </Button>
-      <div className="bg-white shadow-md rounded-lg p-4 mb-4">
-        <h2 className="text-xl font-semibold mb-4">Additional Parameters</h2>
-        <div className="grid grid-cols-2 gap-4">
-          {Object.entries(parameters).map(([param, { selected, value }]) => (
-            <ParameterSelector
-              key={param}
-              param={param}
-              selected={selected}
-              value={value}
-              onChange={handleParameterChange}
-            />
-          ))}
-        </div>
-      </div>
-      <div className="bg-white shadow-md rounded-lg p-4">
-        <h2 className="text-xl font-semibold mb-4">Generated XML Prompt</h2>
-        <pre className="bg-gray-100 p-4 rounded-md whitespace-pre-wrap mb-4">
-          {generateXMLPrompt()}
-        </pre>
-        <div className="flex justify-start space-x-4">
-          <Button onClick={copyToClipboard}>
-            Copy to Clipboard
-          </Button>
-          <a href="https://chat.openai.com/chat" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline flex items-center">
-            Open ChatGPT
-          </a>
-        </div>
-      </div>
+
+      <PromptParameters 
+        parameters={parameters}
+        onParameterChange={handleParameterChange}
+      />
+
+      <GeneratedXMLPrompt 
+        xmlPrompt={generateXMLPrompt(sections, parameters)}
+      />
     </div>
   );
 };
