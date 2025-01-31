@@ -37,10 +37,16 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'checklist':
       case 'improvePrompt':
       case 'createPromptChain':
-        return ['yes', 'no'];
+        return null; // Return null for boolean parameters
       default:
         return [];
     }
+  };
+
+  const isBooleanParameter = getOptions(param) === null;
+
+  const handleCheckboxChange = (checked) => {
+    onChange(param, checked, isBooleanParameter ? (checked ? 'yes' : 'no') : value);
   };
 
   return (
@@ -48,7 +54,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       <Checkbox
         id={param}
         checked={selected}
-        onCheckedChange={(checked) => onChange(param, checked, value)}
+        onCheckedChange={handleCheckboxChange}
       />
       <label
         htmlFor={param}
@@ -56,7 +62,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       >
         {param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1')}
       </label>
-      {param === 'keywords' ? (
+      {!isBooleanParameter && param === 'keywords' ? (
         <Input
           type="text"
           value={value}
@@ -64,7 +70,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
           placeholder="Enter keywords"
           className="ml-2"
         />
-      ) : (
+      ) : !isBooleanParameter && (
         <Select
           value={value}
           onValueChange={(newValue) => onChange(param, selected, newValue)}
@@ -74,7 +80,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
             <SelectValue placeholder="Select..." />
           </SelectTrigger>
           <SelectContent>
-            {getOptions(param).map((option) => (
+            {getOptions(param)?.map((option) => (
               <SelectItem key={option} value={option}>
                 {option}
               </SelectItem>
