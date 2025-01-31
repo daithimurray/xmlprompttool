@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import PromptBuilder from '../components/PromptBuilder';
-import { Toaster } from "@/components/ui/sonner"
-import { Button } from "@/components/ui/button"
+import { Toaster } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { BookOpen, Code2, Brain } from "lucide-react";
 
 const Index = () => {
   const [selectedFramework, setSelectedFramework] = useState('ACT');
@@ -61,39 +64,78 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-gray-900 mb-4">XML Prompt Builder</h1>
-        <p className="text-center text-gray-600 mb-8">
-          When prompts involve multiple components like context, instructions, and examples, XML tags can hugely increase clarity, accuracy, flexibility and parseability. Use this simple tool to quickly create XML structured prompts. Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:underline">David</a>.
-        </p>
-        <div className="flex justify-center space-x-4 mb-8">
-          {Object.keys(frameworks).map((framework) => (
-            <Button
-              key={framework}
-              onClick={() => handleFrameworkClick(framework)}
-              variant={selectedFramework === framework ? "default" : "outline"}
-            >
-              {framework}
-            </Button>
-          ))}
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">XML Prompt Builder</h1>
+          <p className="text-lg text-gray-600 mb-6">
+            When prompts involve multiple components like context, instructions, and examples, XML tags can hugely increase clarity, accuracy, flexibility and parseability.
+          </p>
+          <p className="text-sm text-gray-500">
+            Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">David</a>
+          </p>
         </div>
-        {selectedFramework && (
-          <div className="bg-white shadow-md rounded-lg p-4 mb-8">
-            <h2 className="text-xl font-semibold mb-2">{selectedFramework} Framework</h2>
-            <p className="whitespace-pre-wrap">{frameworks[selectedFramework].helpText}</p>
+
+        <Card className="p-6 mb-8 shadow-lg">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {Object.keys(frameworks).map((framework) => (
+              <Button
+                key={framework}
+                onClick={() => handleFrameworkClick(framework)}
+                variant={selectedFramework === framework ? "default" : "outline"}
+                className="w-full"
+              >
+                {framework}
+              </Button>
+            ))}
           </div>
+        </Card>
+
+        {selectedFramework && (
+          <Card className="bg-white shadow-lg p-6 mb-8">
+            <h2 className="text-xl font-semibold mb-4 flex items-center">
+              <Brain className="mr-2 h-5 w-5" />
+              {selectedFramework} Framework
+            </h2>
+            <p className="whitespace-pre-wrap text-gray-600">{frameworks[selectedFramework].helpText}</p>
+          </Card>
         )}
+
         <PromptBuilder 
           selectedFramework={selectedFramework}
           frameworks={frameworks}
         />
-        <div className="text-center mt-8 mb-4">
-          <a href="https://chatgptforbeginners.co/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline mr-4">ChatGPT for Beginners</a>
-          <a href="https://advancedchatgpt.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline mr-4">Advanced ChatGPT</a>
-          <a href="https://chatgptframeworks.com/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">ChatGPT Frameworks</a>
-        </div>
-        <div className="text-center mt-4 text-sm text-gray-500">
+
+        <Separator className="my-8" />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-4">
+          <a 
+            href="https://chatgptforbeginners.co/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <BookOpen className="h-5 w-5 mr-2" />
+            <span>ChatGPT for Beginners</span>
+          </a>
+          <a 
+            href="https://advancedchatgpt.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <Code2 className="h-5 w-5 mr-2" />
+            <span>Advanced ChatGPT</span>
+          </a>
+          <a 
+            href="https://chatgptframeworks.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+          >
+            <Brain className="h-5 w-5 mr-2" />
+            <span>ChatGPT Frameworks</span>
+          </a>
         </div>
       </div>
       <Toaster />
