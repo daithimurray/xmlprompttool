@@ -64,16 +64,16 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F1F0FB] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-[#343541] py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-[#1A1F2C] mb-4">XML Prompt Builder</h1>
-          <p className="text-lg text-[#403E43] mb-6">
+          <h1 className="text-4xl font-bold text-white mb-4">XML Prompt Builder</h1>
+          <p className="text-lg text-gray-300 mb-6">
             When prompts involve multiple components like context, instructions, and examples, XML tags can hugely increase clarity, accuracy, flexibility and parseability.
           </p>
         </div>
 
-        <Card className="p-6 mb-8 shadow-lg bg-white border border-[#E5DEFF]">
+        <Card className="p-6 mb-8 shadow-lg bg-[#444654] border-0">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {Object.keys(frameworks).map((framework) => (
               <Button
@@ -82,8 +82,8 @@ const Index = () => {
                 variant={selectedFramework === framework ? "default" : "outline"}
                 className={`w-full ${
                   selectedFramework === framework 
-                    ? 'bg-[#7E69AB] hover:bg-[#6E59A5] text-white border-[#7E69AB]' 
-                    : 'border-[#7E69AB] text-[#7E69AB] hover:bg-[#7E69AB] hover:text-white'
+                    ? 'bg-[#10a37f] hover:bg-[#0e916f] text-white border-[#10a37f]' 
+                    : 'border-[#10a37f] text-[#10a37f] hover:bg-[#10a37f] hover:text-white'
                 }`}
               >
                 {framework}
@@ -93,12 +93,12 @@ const Index = () => {
         </Card>
 
         {selectedFramework && (
-          <Card className="bg-white shadow-lg p-6 mb-8 border border-[#E5DEFF]">
-            <h2 className="text-xl font-semibold mb-4 flex items-center text-[#1A1F2C]">
-              <Brain className="mr-2 h-5 w-5 text-[#7E69AB]" />
+          <Card className="bg-[#444654] shadow-lg p-6 mb-8 border-0">
+            <h2 className="text-xl font-semibold mb-4 flex items-center text-white">
+              <Brain className="mr-2 h-5 w-5 text-[#10a37f]" />
               {selectedFramework} Framework
             </h2>
-            <p className="whitespace-pre-wrap text-[#403E43]">{frameworks[selectedFramework].helpText}</p>
+            <p className="whitespace-pre-wrap text-gray-300">{frameworks[selectedFramework].helpText}</p>
           </Card>
         )}
 
@@ -107,14 +107,14 @@ const Index = () => {
           frameworks={frameworks}
         />
 
-        <Separator className="my-8 bg-[#E5DEFF]" />
+        <Separator className="my-8 bg-gray-600" />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 mb-4">
           <a 
             href="https://chatgptforbeginners.co/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#E5DEFF] text-[#403E43] hover:text-[#7E69AB]"
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
           >
             <BookOpen className="h-5 w-5 mr-2" />
             <span>ChatGPT for Beginners</span>
@@ -123,7 +123,7 @@ const Index = () => {
             href="https://advancedchatgpt.com/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#E5DEFF] text-[#403E43] hover:text-[#7E69AB]"
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
           >
             <Code2 className="h-5 w-5 mr-2" />
             <span>Advanced ChatGPT</span>
@@ -132,20 +132,20 @@ const Index = () => {
             href="https://chatgptframeworks.com/" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="flex items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border border-[#E5DEFF] text-[#403E43] hover:text-[#7E69AB]"
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
           >
             <Brain className="h-5 w-5 mr-2" />
             <span>ChatGPT Frameworks</span>
           </a>
         </div>
 
-        <div className="flex justify-between items-center text-sm text-[#7E69AB] mt-4">
+        <div className="flex justify-between items-center text-sm text-gray-300 mt-4">
           <div className="flex space-x-4">
             <a 
               href="https://chat.openai.com/chat" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline"
+              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
             >
               Open ChatGPT
             </a>
@@ -153,13 +153,13 @@ const Index = () => {
               href="https://claude.ai/new" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline"
+              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
             >
               Open Claude
             </a>
           </div>
           <p>
-            Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline">David</a>
+            Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-[#10a37f] hover:text-[#0e916f] hover:underline">David</a>
           </p>
         </div>
       </div>
