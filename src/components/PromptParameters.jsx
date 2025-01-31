@@ -7,15 +7,15 @@ const PromptParameters = ({ parameters, onParameterChange }) => {
   // Reorganized categories and parameters in a more logical order
   const categories = {
     primary: ['tone', 'length', 'format'], // Most commonly used parameters
-    content: ['style', 'creativity', 'detail', 'keywords'], // Content-related parameters
     context: ['audience', 'sentiment', 'urgency'], // Context-related parameters
+    content: ['style', 'creativity', 'detail', 'keywords'], // Content-related parameters
     advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist'] // Advanced features
   };
 
   const categoryLabels = {
     primary: 'Essential Parameters',
-    content: 'Content Configuration',
     context: 'Context & Audience',
+    content: 'Content Configuration',
     advanced: 'Advanced Features'
   };
 
