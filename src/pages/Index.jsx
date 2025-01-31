@@ -126,14 +126,42 @@ const Index = () => {
             className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
           >
             <Code2 className="h-5 w-5 mr-2" />
-            <span>Open Claude</span>
+            <span>Advanced ChatGPT</span>
           </a>
-          <div className="flex items-center justify-end p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0">
+          <a 
+            href="https://chatgptframeworks.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center p-4 bg-[#444654] rounded-lg shadow-md hover:shadow-lg transition-shadow border-0 text-gray-300 hover:text-[#10a37f]"
+          >
+            <Brain className="h-5 w-5 mr-2" />
+            <span>ChatGPT Frameworks</span>
+          </a>
+        </div>
+
+        <div className="flex justify-between items-center text-sm text-gray-300 mt-4">
+          <div className="flex items-center space-x-4">
+            <a 
+              href="https://chat.openai.com/chat" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
+            >
+              Open ChatGPT
+            </a>
+            <a 
+              href="https://claude.ai/new" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
+            >
+              Open Claude
+            </a>
             <a 
               href="https://www.linkedin.com/in/davidmichaelmurray" 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="text-gray-300 hover:text-[#10a37f]"
+              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
             >
               Built by David
             </a>
