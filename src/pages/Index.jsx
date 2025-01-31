@@ -138,35 +138,6 @@ const Index = () => {
             <span>ChatGPT Frameworks</span>
           </a>
         </div>
-
-        <div className="flex justify-between items-center text-sm text-gray-300 mt-4">
-          <div className="flex items-center space-x-4">
-            <a 
-              href="https://chat.openai.com/chat" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
-            >
-              Open ChatGPT
-            </a>
-            <a 
-              href="https://claude.ai/new" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
-            >
-              Open Claude
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/davidmichaelmurray" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-[#10a37f] hover:text-[#0e916f] hover:underline"
-            >
-              Built by David
-            </a>
-          </div>
-        </div>
       </div>
       <Toaster />
     </div>
