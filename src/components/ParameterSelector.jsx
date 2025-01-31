@@ -90,18 +90,18 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
   };
 
   return (
-    <div className="flex items-center gap-1 p-1.5 rounded-lg hover:bg-gray-50 transition-colors">
-      <div className="flex items-center gap-1 min-w-[180px]">
+    <div className="flex items-center gap-0.5 p-1 rounded-lg hover:bg-gray-50 transition-colors">
+      <div className="flex items-center gap-0.5 min-w-[180px]">
         {getIcon(param)}
         <label
           htmlFor={param}
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ml-0.5"
         >
           {displayName}
         </label>
       </div>
       
-      <div className="flex items-center gap-1 flex-1">
+      <div className="flex items-center gap-0.5 flex-1">
         <Checkbox
           id={param}
           checked={selected}
@@ -116,7 +116,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
               value={value}
               onChange={(e) => onChange(param, selected, e.target.value)}
               placeholder="Enter keywords"
-              className="flex-1 ml-1"
+              className="flex-1 ml-0.5"
               disabled={!selected}
             />
           ) : (
@@ -125,7 +125,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
               onValueChange={(newValue) => onChange(param, selected, newValue)}
               disabled={!selected}
             >
-              <SelectTrigger className="w-[180px] ml-1">
+              <SelectTrigger className="w-[180px] ml-0.5">
                 <SelectValue placeholder="Select..." />
               </SelectTrigger>
               <SelectContent>
