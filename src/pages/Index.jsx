@@ -71,9 +71,29 @@ const Index = () => {
           <p className="text-lg text-[#403E43] mb-6">
             When prompts involve multiple components like context, instructions, and examples, XML tags can hugely increase clarity, accuracy, flexibility and parseability.
           </p>
-          <p className="text-sm text-[#7E69AB]">
-            Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline">David</a>
-          </p>
+          <div className="flex justify-between items-center text-sm text-[#7E69AB]">
+            <div className="flex space-x-4">
+              <a 
+                href="https://chat.openai.com/chat" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline"
+              >
+                Open ChatGPT
+              </a>
+              <a 
+                href="https://claude.ai/new" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline"
+              >
+                Open Claude
+              </a>
+            </div>
+            <p>
+              Built by <a href="https://www.linkedin.com/in/davidmichaelmurray" target="_blank" rel="noopener noreferrer" className="text-[#6E59A5] hover:text-[#5B4A94] hover:underline">David</a>
+            </p>
+          </div>
         </div>
 
         <Card className="p-6 mb-8 shadow-lg bg-white border border-[#E5DEFF]">
