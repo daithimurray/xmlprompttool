@@ -36,6 +36,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'includeCounterarguments':
       case 'checklist':
       case 'improvePrompt':
+      case 'createPromptChain':
         return ['yes', 'no'];
       default:
         return [];

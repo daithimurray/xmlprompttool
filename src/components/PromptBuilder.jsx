@@ -22,6 +22,7 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     includeCounterarguments: { selected: false, value: 'no' },
     checklist: { selected: false, value: 'no' },
     improvePrompt: { selected: false, value: 'no' },
+    createPromptChain: { selected: false, value: 'no' },
   });
 
   useEffect(() => {
@@ -103,6 +104,22 @@ Consider previous discussions, existing knowledge, and any necessary constraints
 "${xmlPrompt}"`;
       
       return improvementWrapper;
+    }
+
+    if (parameters.createPromptChain.selected && parameters.createPromptChain.value === 'yes') {
+      const chainWrapper = `<act>
+You are a {{prompt engineer}} with {{huge experience}} in {{writing prompts for LLMs}}.
+</act>
+
+<task>
+Your task is to {{take the prompt below and create a chain of sequential prompts that each build out the output of the previous ones. Each prompt should focus on a single element of the overall goal of the original promt}}. Focus on {{making it clear and understandable for LLMs to process and deliver the best outputs}}. The goal is that by breaking down the larger problem into small, chained prompts, the final output is better than just doing one large one-shot prompt
+
+Consider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If additional context is required for the most valuable output, ask targeted questions before proceeding. 
+</task>
+
+"${xmlPrompt}"`;
+      
+      return chainWrapper;
     }
 
     return xmlPrompt;
