@@ -91,14 +91,16 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
 
   return (
     <div className="flex items-center gap-0.5 p-1 rounded-lg hover:bg-gray-50 transition-colors">
-      <div className="flex items-center gap-0.5 min-w-[180px]">
-        {getIcon(param)}
-        <label
-          htmlFor={param}
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ml-0.5"
-        >
-          {displayName}
-        </label>
+      <div className="flex items-center min-w-[180px]">
+        <span className="flex items-center gap-1">
+          {getIcon(param)}
+          <label
+            htmlFor={param}
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+          >
+            {displayName}
+          </label>
+        </span>
       </div>
       
       <div className="flex items-center gap-0.5 flex-1">
