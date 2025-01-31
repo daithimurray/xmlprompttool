@@ -82,6 +82,7 @@ const Index = () => {
         </div>
 
         <Card className="p-6 mb-8 shadow-lg bg-[#444654] border-0">
+          <h2 className="text-xl font-semibold mb-4 text-white">Choose a framework</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {Object.keys(frameworks).map((framework) => (
               <Button
