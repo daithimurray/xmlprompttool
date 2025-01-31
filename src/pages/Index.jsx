@@ -81,7 +81,7 @@ const Index = () => {
           </p>
         </div>
 
-        <h2 className="text-2xl font-semibold text-white mb-4 text-center">STEP 1 - CHOOSE A FRAMEWORK</h2>
+        <h2 className="text-2xl font-semibold text-white mb-4 text-center">STEP 1️⃣ - CHOOSE A FRAMEWORK</h2>
 
         <Card className="p-6 mb-8 shadow-lg bg-[#444654] border-0">
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
