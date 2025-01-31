@@ -68,9 +68,17 @@ const Index = () => {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-white mb-4">XML Prompt Builder</h1>
-          <p className="text-lg text-gray-300 mb-6">
+          <p className="text-lg text-gray-300 mb-2">
             When prompts involve multiple components like context, instructions, and examples, XML tags can hugely increase clarity, accuracy, flexibility and parseability.
           </p>
+          <a 
+            href="https://www.linkedin.com/in/davidmichaelmurray" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-lg text-gray-300 hover:text-[#10a37f] transition-colors"
+          >
+            Built by David.
+          </a>
         </div>
 
         <Card className="p-6 mb-8 shadow-lg bg-[#444654] border-0">
