@@ -98,7 +98,9 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
   };
 
   return (
-    <div className="flex items-center gap-0.5 p-1 rounded-lg hover:bg-gray-50 transition-colors">
+    <div className={`flex items-center gap-0.5 p-1 rounded-lg transition-colors ${
+      selected ? 'bg-[#F2FCE2]' : 'hover:bg-gray-50'
+    }`}>
       <div className="flex items-center min-w-[100px]">
         {isAdvancedFeature ? (
           <span className="flex items-center gap-1">
