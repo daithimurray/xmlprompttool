@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { MessageSquare, Code2 } from "lucide-react";
 
 const GeneratedXMLPrompt = ({ xmlPrompt }) => {
   const copyToClipboard = () => {
@@ -24,18 +23,16 @@ const GeneratedXMLPrompt = ({ xmlPrompt }) => {
           href="https://chat.openai.com/chat" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-blue-500 hover:underline flex items-center gap-2"
+          className="text-blue-500 hover:underline flex items-center"
         >
-          <MessageSquare className="h-4 w-4" />
           Open ChatGPT
         </a>
         <a 
           href="https://claude.ai/new" 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="text-blue-500 hover:underline flex items-center gap-2"
+          className="text-blue-500 hover:underline flex items-center"
         >
-          <Code2 className="h-4 w-4" />
           Open Claude
         </a>
       </div>
