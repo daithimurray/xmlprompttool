@@ -35,6 +35,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'includeExamples':
       case 'includeCounterarguments':
       case 'checklist':
+      case 'improvePrompt':
         return ['yes', 'no'];
       default:
         return [];
@@ -52,7 +53,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
         htmlFor={param}
         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
-        {param.charAt(0).toUpperCase() + param.slice(1)}
+        {param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1')}
       </label>
       {param === 'keywords' ? (
         <Input

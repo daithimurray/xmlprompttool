@@ -21,6 +21,7 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     urgency: { selected: false, value: 'medium' },
     includeCounterarguments: { selected: false, value: 'no' },
     checklist: { selected: false, value: 'no' },
+    improvePrompt: { selected: false, value: 'no' },
   });
 
   useEffect(() => {
@@ -51,7 +52,7 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
   };
 
   const generateXMLPrompt = () => {
-    let xmlPrompt = sections
+    let basePrompt = sections
       .map(({ section, prompt }) => `<${section}>\n${prompt}\n</${section}>`)
       .join('\n\n');
 
@@ -78,12 +79,30 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
       })
       .join('\n');
 
+    let xmlPrompt = basePrompt;
+
     if (selectedParameters) {
       xmlPrompt += '\n\n<parameters>\n' + selectedParameters + '\n</parameters>';
     }
 
     if (parameters.checklist.selected && parameters.checklist.value === 'yes') {
       xmlPrompt += '\n\n<checklist>\nStart by analyzing the task and breaking it down into a clear, numbered list of single, actionable items. After addressing each item in sequence, review the completed list to ensure all items are handled thoroughly and to the highest standard. If any item is incomplete or can be improved, revisit and refine it before finalizing the output.\n</checklist>';
+    }
+
+    if (parameters.improvePrompt.selected && parameters.improvePrompt.value === 'yes') {
+      const improvementWrapper = `<act>
+You are a {{prompt engineer}} with {{huge experience}} in {{writing prompts for LLMs}}.
+</act>
+
+<task>
+Your task is to {{take the prompt below and improve it for a LLM}}. Focus on {{making it clear and understandable for LLMs to process and deliver the best outputs}}. 
+
+Consider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If you need any further context to give the best / most valuable output - please ask me relevant questions.
+</task>
+
+"${xmlPrompt}"`;
+      
+      return improvementWrapper;
     }
 
     return xmlPrompt;
