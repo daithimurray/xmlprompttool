@@ -79,6 +79,7 @@ const Index = () => {
               Built by David.
             </a>
           </p>
+          <Separator className="my-4 bg-gray-600 mx-auto w-1/2" />
         </div>
 
         <h2 className="text-2xl font-semibold text-white mb-4 text-center">STEP 1️⃣ - CHOOSE A FRAMEWORK</h2>
