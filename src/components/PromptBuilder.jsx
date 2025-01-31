@@ -100,7 +100,10 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
         </Droppable>
       </DragDropContext>
       
-      <Button onClick={addSection} className="mb-4">
+      <Button 
+        onClick={addSection} 
+        className="mb-4 bg-[#10a37f] hover:bg-[#0e916f] text-white"
+      >
         Add Section
       </Button>
 
