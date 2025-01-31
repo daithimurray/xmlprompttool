@@ -2,6 +2,22 @@ import React from 'react';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
+import { 
+  MessageSquare, 
+  Type, 
+  Layout, 
+  Clock, 
+  Sparkles, 
+  FileText, 
+  Users, 
+  Heart, 
+  Tag,
+  Zap,
+  CheckSquare,
+  MessageCircle,
+  Brain,
+  GitBranch
+} from 'lucide-react';
 
 const ParameterSelector = ({ param, selected, value, onChange }) => {
   const getOptions = (param) => {
@@ -43,51 +59,86 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
     }
   };
 
+  const getIcon = (param) => {
+    const icons = {
+      tone: MessageSquare,
+      style: Type,
+      format: Layout,
+      length: Clock,
+      creativity: Sparkles,
+      detail: FileText,
+      audience: Users,
+      sentiment: Heart,
+      keywords: Tag,
+      urgency: Zap,
+      includeExamples: CheckSquare,
+      includeCounterarguments: MessageCircle,
+      checklist: CheckSquare,
+      improvePrompt: Brain,
+      createPromptChain: GitBranch
+    };
+    
+    const IconComponent = icons[param] || MessageSquare;
+    return <IconComponent className="h-4 w-4 text-gray-500" />;
+  };
+
   const isBooleanParameter = getOptions(param) === null;
+  const displayName = param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1');
 
   const handleCheckboxChange = (checked) => {
     onChange(param, checked, isBooleanParameter ? (checked ? 'yes' : 'no') : value);
   };
 
   return (
-    <div className="flex items-center space-x-2">
-      <Checkbox
-        id={param}
-        checked={selected}
-        onCheckedChange={handleCheckboxChange}
-      />
-      <label
-        htmlFor={param}
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        {param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1')}
-      </label>
-      {!isBooleanParameter && param === 'keywords' ? (
-        <Input
-          type="text"
-          value={value}
-          onChange={(e) => onChange(param, selected, e.target.value)}
-          placeholder="Enter keywords"
-          className="ml-2"
-        />
-      ) : !isBooleanParameter && (
-        <Select
-          value={value}
-          onValueChange={(newValue) => onChange(param, selected, newValue)}
-          disabled={!selected}
+    <div className="flex items-center gap-4 p-2 rounded-lg hover:bg-gray-50 transition-colors">
+      <div className="flex items-center gap-2 min-w-[200px]">
+        {getIcon(param)}
+        <label
+          htmlFor={param}
+          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
         >
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Select..." />
-          </SelectTrigger>
-          <SelectContent>
-            {getOptions(param)?.map((option) => (
-              <SelectItem key={option} value={option}>
-                {option}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-      )}
+          {displayName}
+        </label>
+      </div>
+      
+      <div className="flex items-center gap-2 flex-1">
+        <Checkbox
+          id={param}
+          checked={selected}
+          onCheckedChange={handleCheckboxChange}
+          className="data-[state=checked]:bg-primary"
+        />
+        
+        {!isBooleanParameter && (
+          param === 'keywords' ? (
+            <Input
+              type="text"
+              value={value}
+              onChange={(e) => onChange(param, selected, e.target.value)}
+              placeholder="Enter keywords"
+              className="flex-1 ml-2"
+              disabled={!selected}
+            />
+          ) : (
+            <Select
+              value={value}
+              onValueChange={(newValue) => onChange(param, selected, newValue)}
+              disabled={!selected}
+            >
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Select..." />
+              </SelectTrigger>
+              <SelectContent>
+                {getOptions(param)?.map((option) => (
+                  <SelectItem key={option} value={option}>
+                    {option}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )
+        )}
+      </div>
     </div>
   );
 };
