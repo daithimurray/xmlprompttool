@@ -1,3 +1,4 @@
+
 export const generateXMLPrompt = (sections, parameters) => {
   let xmlPrompt = '<prompt>';
 
@@ -67,6 +68,10 @@ export const generateXMLPrompt = (sections, parameters) => {
 
   if (parameters.searchInternet.selected && parameters.searchInternet.value === 'yes') {
     xmlPrompt += '\n\n<search>\nPlease actively search the internet for relevant information and cite your sources in the response.\n</search>';
+  }
+
+  if (parameters.tenQuestions.selected && parameters.tenQuestions.value === 'yes') {
+    xmlPrompt += '\n\n<10 Questions>\nBefore you do anything, think through the task and context I\'ve given you. Ask me 10 questions that you think will help you give me the most valuable output by providing you with even more context.\n</10 Questions>';
   }
 
   xmlPrompt += '\n</prompt>';

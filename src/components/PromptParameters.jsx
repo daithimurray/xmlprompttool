@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ParameterSelector from './ParameterSelector';
 import { Settings } from 'lucide-react';
@@ -9,7 +8,7 @@ const PromptParameters = ({ parameters, onParameterChange }) => {
     primary: ['tone', 'length', 'format'],
     context: ['audience', 'sentiment', 'urgency'],
     content: ['style', 'creativity', 'detail', 'keywords'],
-    advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'searchInternet'] // Added searchInternet
+    advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'searchInternet', 'tenQuestions']
   };
 
   const categoryLabels = {

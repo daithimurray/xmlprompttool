@@ -29,7 +29,8 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     includeExamples: { selected: false, value: 'no' },
     includeCounterarguments: { selected: false, value: 'no' },
     checklist: { selected: false, value: 'no' },
-    searchInternet: { selected: false, value: 'no' } // Added new parameter
+    searchInternet: { selected: false, value: 'no' },
+    tenQuestions: { selected: false, value: 'no' }  // Added new parameter
   });
 
   const handlePromptChange = (sectionName, newPrompt) => {
