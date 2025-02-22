@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -16,7 +17,8 @@ import {
   CheckSquare,
   MessageCircle,
   Brain,
-  GitBranch
+  GitBranch,
+  HelpCircle
 } from 'lucide-react';
 
 const ParameterSelector = ({ param, selected, value, onChange }) => {
@@ -53,18 +55,12 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'checklist':
       case 'improvePrompt':
       case 'createPromptChain':
-        return null; // Return null for boolean parameters
+      case 'tenQuestions':  // Added here to mark it as a boolean parameter
+        return null;
       default:
         return [];
     }
   };
-
-  // Set default value for Tone parameter
-  React.useEffect(() => {
-    if (param === 'tone' && !value && selected) {
-      onChange(param, selected, 'Professional');
-    }
-  }, [param, value, selected, onChange]);
 
   const getIcon = (param) => {
     const icons = {
@@ -82,7 +78,8 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       includeCounterarguments: MessageCircle,
       checklist: CheckSquare,
       improvePrompt: Brain,
-      createPromptChain: GitBranch
+      createPromptChain: GitBranch,
+      tenQuestions: HelpCircle
     };
     
     const IconComponent = icons[param] || MessageSquare;
@@ -91,7 +88,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
 
   const isBooleanParameter = getOptions(param) === null;
   const displayName = param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1');
-  const isAdvancedFeature = ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist'].includes(param);
+  const isAdvancedFeature = ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'tenQuestions'].includes(param);
 
   const handleCheckboxChange = (checked) => {
     onChange(param, checked, isBooleanParameter ? (checked ? 'yes' : 'no') : param === 'tone' ? 'Professional' : value);
