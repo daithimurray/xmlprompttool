@@ -33,6 +33,7 @@ export const generateXMLPrompt = (sections, parameters) => {
       if (param === 'format') return false; // Skip format parameter as it's handled separately
       if (param === 'improvePrompt' && value === 'yes' && parameters.improvePrompt.selected) return false;
       if (param === 'createPromptChain' && value === 'yes' && parameters.createPromptChain.selected) return false;
+      if (param === 'tenQuestions' && value === 'yes' && parameters.tenQuestions.selected) return false;
       return true;
     })
     .map(([param, { value }]) => {
@@ -105,6 +106,10 @@ Consider previous discussions, existing knowledge, and any necessary constraints
 "${xmlPrompt}"`;
     
     return chainWrapper;
+  }
+
+  if (parameters.tenQuestions.selected && parameters.tenQuestions.value === 'yes') {
+    xmlPrompt += '\n\n<10 Questions>\nBefore you do anything, think through the task and context I\'ve given you. Ask me 10 questions that you think will help you give me the most valuable output by providing you with even more context.\n</10 Questions>';
   }
 
   return xmlPrompt;
