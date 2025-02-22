@@ -1,11 +1,36 @@
-export const generateXMLPrompt = (sections, parameters) => {
-  let basePrompt = sections
-    .map(({ section, prompt }) => `<${section}>\n${prompt}\n</${section}>`)
-    .join('\n\n');
 
+export const generateXMLPrompt = (sections, parameters) => {
+  // Extract format parameter if it exists
+  const formatParam = parameters.format?.selected ? parameters.format.value : null;
+
+  // Generate base prompt with sections
+  const sectionPrompts = sections.map(({ section, prompt }) => {
+    // Skip format section if it exists in sections
+    if (section === 'format') return '';
+    return `<${section}>\n${prompt}\n</${section}>`;
+  }).filter(Boolean);
+
+  // Insert format tag between constraints and act if format is selected
+  let basePrompt = '';
+  let constraintsFound = false;
+  
+  for (let i = 0; i < sectionPrompts.length; i++) {
+    basePrompt += sectionPrompts[i];
+    
+    if (sectionPrompts[i].includes('</constraints>') && formatParam) {
+      basePrompt += '\n\n<format>\nThe format should be a / an ' + formatParam + '\n</format>';
+    }
+    
+    if (i < sectionPrompts.length - 1) {
+      basePrompt += '\n\n';
+    }
+  }
+
+  // Generate parameters section
   const selectedParameters = Object.entries(parameters)
     .filter(([param, { selected }]) => selected)
     .filter(([param, { value }]) => {
+      if (param === 'format') return false; // Skip format parameter as it's handled separately
       if (param === 'improvePrompt' && value === 'yes' && parameters.improvePrompt.selected) return false;
       if (param === 'createPromptChain' && value === 'yes' && parameters.createPromptChain.selected) return false;
       return true;
