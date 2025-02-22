@@ -1,15 +1,15 @@
+
 import React from 'react';
 import ParameterSelector from './ParameterSelector';
 import { Settings } from 'lucide-react';
 import { Card } from "@/components/ui/card";
 
 const PromptParameters = ({ parameters, onParameterChange }) => {
-  // Reorganized categories and parameters in a more logical order
   const categories = {
-    primary: ['tone', 'length', 'format'], // Most commonly used parameters
-    context: ['audience', 'sentiment', 'urgency'], // Context-related parameters
-    content: ['style', 'creativity', 'detail', 'keywords'], // Content-related parameters
-    advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist'] // Advanced features
+    primary: ['tone', 'length', 'format'],
+    context: ['audience', 'sentiment', 'urgency'],
+    content: ['style', 'creativity', 'detail', 'keywords'],
+    advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'searchInternet'] // Added searchInternet
   };
 
   const categoryLabels = {
