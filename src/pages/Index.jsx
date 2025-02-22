@@ -17,7 +17,7 @@ const Index = () => {
         { name: 'constraints', defaultPrompt: 'I don\'t want {{undesiredoutcomes}}' },
         { name: 'act', defaultPrompt: 'You are a {{jobtitle}} with {{yearsofexperience}} in {{industry}}. You specialize in {{expertiseskills}} and communicate in a {{tonestyle}} manner. Your goal is to {{primaryobjective}}.' },
         { name: 'context', defaultPrompt: '1 - {{contextitem}}\n2 - {{contextitem}}\n3 - {{contextitem}}' },
-        { name: 'task', defaultPrompt: 'Your task is to {{taskdetails}}. Focus on {{keypriorities}}. Ensure that your answer is {{constraints}}.\n\nConsider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If you need any further context to give the best / most valuable output - please ask me relevant questions.' }
+        { name: 'task', defaultPrompt: 'Your task is to {{taskdetails}}. Focus on {{ultimateGoal}}. Ensure that your answer is abiding by the {{constraints}}.\n\nConsider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If you need any further context to give the best / most valuable output - please ask me relevant questions.' }
       ],
       helpText: 'Act: Define the specific role, profession, or character the AI should embody.\nUltimate Goal: Clearly state what you want to achieve.\nConstraints: Specify what you want to avoid or exclude.\nContext: Provide relevant background information and circumstances.\nTask: Clearly state what you want the AI to do or accomplish.'
     },
