@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import PromptBuilder from '../components/PromptBuilder';
 import { Toaster } from "@/components/ui/sonner";
@@ -12,9 +13,9 @@ const Index = () => {
   const frameworks = {
     ACT: {
       sections: [
-        { name: 'act', defaultPrompt: 'You are a {{jobtitle}} with {{yearsofexperience}} in {{industry}}. You specialize in {{expertiseskills}} and communicate in a {{tonestyle}} manner. Your goal is to {{primaryobjective}}.' },
         { name: 'ultimateGoal', defaultPrompt: 'I want {{desiredoutcome}}' },
         { name: 'constraints', defaultPrompt: 'I don\'t want {{undesiredoutcomes}}' },
+        { name: 'act', defaultPrompt: 'You are a {{jobtitle}} with {{yearsofexperience}} in {{industry}}. You specialize in {{expertiseskills}} and communicate in a {{tonestyle}} manner. Your goal is to {{primaryobjective}}.' },
         { name: 'context', defaultPrompt: '1 - {{contextitem}}\n2 - {{contextitem}}\n3 - {{contextitem}}' },
         { name: 'task', defaultPrompt: 'Your task is to {{taskdetails}}. Focus on {{keypriorities}}. Ensure that your answer is {{constraints}}.\n\nConsider previous discussions, existing knowledge, and any necessary constraints when generating responses. If any assumptions are made, clarify them explicitly. If you need any further context to give the best / most valuable output - please ask me relevant questions.' }
       ],
