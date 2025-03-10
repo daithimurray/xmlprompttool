@@ -18,7 +18,8 @@ import {
   MessageCircle,
   Brain,
   GitBranch,
-  HelpCircle
+  HelpCircle,
+  Layers
 } from 'lucide-react';
 
 const ParameterSelector = ({ param, selected, value, onChange }) => {
@@ -55,7 +56,8 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'checklist':
       case 'improvePrompt':
       case 'createPromptChain':
-      case 'tenQuestions':  // Added here to mark it as a boolean parameter
+      case 'tenQuestions':
+      case 'atomicSteps':  // Added here to mark it as a boolean parameter
         return null;
       default:
         return [];
@@ -79,7 +81,8 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       checklist: CheckSquare,
       improvePrompt: Brain,
       createPromptChain: GitBranch,
-      tenQuestions: HelpCircle
+      tenQuestions: HelpCircle,
+      atomicSteps: Layers
     };
     
     const IconComponent = icons[param] || MessageSquare;
@@ -88,7 +91,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
 
   const isBooleanParameter = getOptions(param) === null;
   const displayName = param.charAt(0).toUpperCase() + param.slice(1).replace(/([A-Z])/g, ' $1');
-  const isAdvancedFeature = ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'tenQuestions'].includes(param);
+  const isAdvancedFeature = ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'tenQuestions', 'atomicSteps'].includes(param);
 
   const handleCheckboxChange = (checked) => {
     onChange(param, checked, isBooleanParameter ? (checked ? 'yes' : 'no') : param === 'tone' ? 'Professional' : value);

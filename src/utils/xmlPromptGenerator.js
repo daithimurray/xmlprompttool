@@ -1,5 +1,11 @@
 
 export const generateXMLPrompt = (sections, parameters) => {
+  // Create atomic steps text to add at the beginning if selected
+  let atomicStepsText = '';
+  if (parameters.atomicSteps.selected && parameters.atomicSteps.value === 'yes') {
+    atomicStepsText = "Break down the problems that I enter into their most atomic, self-contained steps feasible. Each step should be as independent as possible, requiring minimal reliance on previous steps. If any of the steps can be executed in parallel, structure them accordingly. Perform each step separately, then reintegrate all results to produce a coherent final response.\n\n";
+  }
+
   // Extract format parameter if it exists
   const formatParam = parameters.format?.selected ? parameters.format.value : null;
 
@@ -34,6 +40,7 @@ export const generateXMLPrompt = (sections, parameters) => {
       if (param === 'improvePrompt' && value === 'yes' && parameters.improvePrompt.selected) return false;
       if (param === 'createPromptChain' && value === 'yes' && parameters.createPromptChain.selected) return false;
       if (param === 'tenQuestions' && value === 'yes' && parameters.tenQuestions.selected) return false;
+      if (param === 'atomicSteps' && value === 'yes' && parameters.atomicSteps.selected) return false;
       return true;
     })
     .map(([param, { value }]) => {
@@ -57,7 +64,8 @@ export const generateXMLPrompt = (sections, parameters) => {
     })
     .join('\n');
 
-  let xmlPrompt = basePrompt;
+  // Combine atomic steps text with the rest of the prompt
+  let xmlPrompt = atomicStepsText + basePrompt;
 
   if (selectedParameters) {
     xmlPrompt += '\n\n<parameters>\n' + selectedParameters + '\n</parameters>';
