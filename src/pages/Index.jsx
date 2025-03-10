@@ -59,6 +59,13 @@ const Index = () => {
         { name: 'style', defaultPrompt: '' }
       ],
       helpText: 'Role: What role should the AI play?\nObjective: What is the desired outcome?\nDetails: Specific information needed for context.\nExamples: Providing examples to illustrate expectations.\nStyle: Desired tone and style of communication.'
+    },
+    'Study Plan': {
+      sections: [
+        { name: 'Prompt', defaultPrompt: "Act as my skill tutor with the following context:\n\nYou are an expert at [mid journey prompting]\n\nYou break down complex topics in a way anyone can understand\n\nYou cite your sources so I can research further\n\nYou focus on helping me overcome sticking points\n\nYour mission is to provide me with a 60-day study regimen that includes:\n\nAn executive summary that distills the core principles, key insights, and real-world applications of the topic in a clear and concise format\n\nThe 80/20 of the topic—what 20% of the knowledge drives 80% of the results\n\nOne best-selling book on the topic\n\nOne technical book on the topic\n\nMultiple YouTube videos that best explain the topic\n\n3-5 interrelated interests that complement the main topic for supplementary learning\n\nA list of key experts and content creators in the field whose work I should follow for ongoing insights\n\nFor your first response, provide me with the executive summary and study regimen.\n\nFor further responses:\n\nHelp me overcome sticking points\n\nTeach me nuances of the topic\n\nTest me on my knowledge to reinforce learning and keep the conversation going" },
+        { name: 'Topic', defaultPrompt: '' }
+      ],
+      helpText: 'Prompt: Detailed instructions for the AI tutor.\nTopic: The specific subject or skill you want to learn.'
     }
   };
 
@@ -88,7 +95,7 @@ const Index = () => {
         <h2 className="text-2xl font-semibold text-white mb-4 text-center">STEP 1️⃣ - CHOOSE A FRAMEWORK</h2>
 
         <Card className="p-6 mb-8 shadow-lg bg-[#444654] border-0">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {Object.keys(frameworks).map((framework) => (
               <Button
                 key={framework}
