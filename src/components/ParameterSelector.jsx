@@ -57,7 +57,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       case 'improvePrompt':
       case 'createPromptChain':
       case 'tenQuestions':
-      case 'atomicSteps':  // Added here to mark it as a boolean parameter
+      case 'atomicSteps':  // Added atomicSteps to boolean parameters
         return null;
       default:
         return [];
@@ -82,7 +82,7 @@ const ParameterSelector = ({ param, selected, value, onChange }) => {
       improvePrompt: Brain,
       createPromptChain: GitBranch,
       tenQuestions: HelpCircle,
-      atomicSteps: Layers
+      atomicSteps: Layers  // Added icon for atomicSteps
     };
     
     const IconComponent = icons[param] || MessageSquare;

@@ -9,7 +9,7 @@ const PromptParameters = ({ parameters, onParameterChange }) => {
     primary: ['tone', 'length', 'format'],
     context: ['audience', 'sentiment', 'urgency'],
     content: ['style', 'creativity', 'detail', 'keywords'],
-    advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'tenQuestions', 'atomicSteps'] // Added atomicSteps
+    advanced: ['improvePrompt', 'createPromptChain', 'includeExamples', 'includeCounterarguments', 'checklist', 'tenQuestions', 'atomicSteps']
   };
 
   const categoryLabels = {

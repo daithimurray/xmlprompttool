@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import PromptSection from './PromptSection';
@@ -25,7 +26,7 @@ const PromptBuilder = ({ selectedFramework, frameworks }) => {
     improvePrompt: { selected: false, value: 'no' },
     createPromptChain: { selected: false, value: 'no' },
     tenQuestions: { selected: false, value: 'no' },
-    atomicSteps: { selected: false, value: 'no' }, // Added new parameter
+    atomicSteps: { selected: false, value: 'no' }, // Added atomicSteps parameter
   });
 
   useEffect(() => {
