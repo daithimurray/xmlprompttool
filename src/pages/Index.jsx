@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { BookOpen, Code2, Brain, ExternalLink } from "lucide-react";
+
 const Index = () => {
   const [selectedFramework, setSelectedFramework] = useState('ACT');
   const frameworks = {
@@ -154,7 +155,9 @@ const Index = () => {
           <p className="text-md text-gray-300 py-2 rounded-md px-[240px]">
             Hi there - I hope this tool has been helpful!<br />
             I've worked in tech for 10+ years and I use AI every day to help me be more productive.<br />
-            Reach out if I can help at all or if you'd like me to send you my favourite follow-up prompts I use every day.
+            <a href="https://www.linkedin.com/in/davidmichaelmurray/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-[#10a37f] transition-colors">
+              Reach out if I can help at all
+            </a> or if you'd like me to send you my favourite follow-up prompts I use every day.
           </p>
         </Card>
 
@@ -178,4 +181,5 @@ const Index = () => {
       <Toaster />
     </div>;
 };
+
 export default Index;
