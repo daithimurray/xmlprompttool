@@ -89,6 +89,11 @@ const Index = () => {
               Built by David.
             </a>
           </p>
+          <p className="text-md text-gray-300 mb-4">
+            Hi there - I hope this tool has been helpful!<br />
+            I've worked in tech for 10+ years and I use AI every day to help me be more productive.<br />
+            Reach out if I can help at all or if you'd like me to send you my favourite follow-up prompts I use every day.
+          </p>
           <Separator className="my-4 bg-gray-600 mx-auto w-1/2" />
           <a 
             href="https://mypromptbuilder.com/" 
