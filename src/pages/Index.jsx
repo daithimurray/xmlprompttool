@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { BookOpen, Code2, Brain } from "lucide-react";
+import { BookOpen, Code2, Brain, ExternalLink } from "lucide-react";
 
 const Index = () => {
   const [selectedFramework, setSelectedFramework] = useState('ACT');
@@ -90,6 +90,14 @@ const Index = () => {
             </a>
           </p>
           <Separator className="my-4 bg-gray-600 mx-auto w-1/2" />
+          <a 
+            href="https://mypromptbuilder.com/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center justify-center text-gray-300 hover:text-[#10a37f] transition-colors mt-2"
+          >
+            Check out the newest version of this tool here <ExternalLink className="h-4 w-4 ml-1" />
+          </a>
         </div>
 
         <h2 className="text-2xl font-semibold text-white mb-4 text-center">STEP 1️⃣ - CHOOSE A FRAMEWORK</h2>
