@@ -89,7 +89,7 @@ const Index = () => {
               Built by David.
             </a>
           </p>
-          <p className="text-md text-gray-300 mb-4">
+          <p className="text-md text-gray-300 mb-4 px-4 py-2 bg-[#444654] rounded-md">
             Hi there - I hope this tool has been helpful!<br />
             I've worked in tech for 10+ years and I use AI every day to help me be more productive.<br />
             Reach out if I can help at all or if you'd like me to send you my favourite follow-up prompts I use every day.
