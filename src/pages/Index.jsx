@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import PromptBuilder from '../components/PromptBuilder';
 import { Toaster } from "@/components/ui/sonner";
@@ -155,7 +156,7 @@ const Index = () => {
           <p className="text-md text-gray-300 py-2 rounded-md px-[240px]">
             Hi there - I hope this tool has been helpful!<br />
             I've worked in tech for 10+ years and I use AI every day to help me be more productive.<br />
-            <a href="https://www.linkedin.com/in/davidmichaelmurray/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-[#10a37f] transition-colors">
+            <a href="https://www.linkedin.com/in/davidmichaelmurray/" target="_blank" rel="noopener noreferrer" className="text-[#10a37f] hover:text-[#0e916f] transition-colors">
               Reach out if I can help at all
             </a> or if you'd like me to send you my favourite follow-up prompts I use every day.
           </p>
